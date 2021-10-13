@@ -132,11 +132,19 @@
         /*成功した処理*/
         .then(data => {
             //JSONから配列に変換
-            console.log(data);
-            var result = data.filter(value => value.name === 'user');
+            // var result = data.filter(value => value.name === 'user');
+            // console.log(result);
+            // var a=document.getElementById('name').value;
+            // console.log(a);
+            
+            const column = new Object();
+            const result = new Object();
+            column.profile = data[0];
+            column.Q = data[1];
+            column.A = data[2];
+            result.data = column;
             console.log(result);
-            var a=document.getElementById('name').value;
-            console.log(a);
+            
 
         });
 
