@@ -145,9 +145,13 @@
     document.getElementById('user-signed-in').style.display = 'block';
     document.getElementById('user-signed-out').style.display = 'none';
     document.getElementById('name').textContent = user.displayName;
-    document.getElementById('form-uid').value = user.uid;
+    //document.getElementById('form-uid').value = user.uid;
+    var elems = document.getElementsByClassName('uid');
+    for (var i = 0; i < elems.length; i++){
+      elems[i].value= user.uid;
+    }
     document.getElementById('email').textContent = user.email;
-    document.getElementById('uid').textContent = user.uid;
+    //document.getElementById('uid').textContent = user.uid;
     document.getElementById('phone').textContent = user.phoneNumber;
     if (user.photoURL) {
       var photoURL = user.photoURL;
