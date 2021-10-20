@@ -148,7 +148,7 @@
     //document.getElementById('form-uid').value = user.uid;
     var elems = document.getElementsByClassName('uid');
     for (var i = 0; i < elems.length; i++){
-      elems[i].value= user.uid;
+      elems[i].textContent= user.uid;
     }
     document.getElementById('email').textContent = user.email;
     //document.getElementById('uid').textContent = user.uid;
