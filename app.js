@@ -149,6 +149,7 @@
     var elems = document.getElementsByClassName('uid');
     for (var i = 0; i < elems.length; i++){
       elems[i].textContent= user.uid;
+      elems[i].value= user.uid;
     }
     document.getElementById('email').textContent = user.email;
     //document.getElementById('uid').textContent = user.uid;
