@@ -35,7 +35,7 @@
     <body>
         <h1>doPostによる方法</h1>
         <form method="post" action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec">
-            フォームの種類<input name="form" value="question">
+            フォームの種類<input name="form" value="question"><br>
             uid<input type="text" name="uid"><br>
             qid<input type="text" name="qid"><br>
             title<input type="text" name="title"><br>
@@ -45,8 +45,16 @@
                 <input type="submit" value="送信する" class="btn btn-primary">
             </div>
         </form>
+        <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
 
-        <script src="app.js"></script>
+        <script src="app.js">
+            const $form = $('#form')
+            $('.btn-send').on('click', evt => {
+            $form.submit()
+            $form[0].reset()
+            return false
+            })
+        </script>
     </body>
 
 
