@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mipo</title>
+</head>
+<body>
+    <div id="root"></div>
+<script>
+    const endpoint =
+        "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";//WebAPIのURL
+
+    //APIを使って非同期データを取得する
+    fetch(endpoint)
+        .then(response => response.json())
+        /*成功した処理*/
+        .then(data => {
+            //JSONから配列に変換
+            // var result = data.filter(value => value.name === 'user');
+            // console.log(result);
+            // var a=document.getElementById('name').value;
+            // console.log(a);
+            
+            const column = new Object();
+            const result = new Object();
+            column.profile = data[0];
+            column.Q = data[1];
+            column.A = data[2];
+            result.data = column;
+            console.log(result);
+
+            const target = document.getElementById("root");
+            result.data.Q.map((e) => {
+                target.innerHTML += "<a href=./detail.html?id=" + e.Qid + "><p>" + "Question" + e.Qid + "</p></a>";
+            })
+            });
+
+</script>
+</body>
