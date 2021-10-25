@@ -102,9 +102,9 @@
 
                 let htmltext = "";
                 console.log(typeof(url));
-                var resultQ = QList.filter(value => value.Qid === url);
+                var resultQ = QList.filter(value => value.qid === url);
                 console.log(resultQ);
-                var resultA = AList.filter(value => value.Qid === url);
+                var resultA = AList.filter(value => value.qid === url);
                 console.log(resultA);
                 htmltext += '<p>質問</p>';
                 for (let i = 0; i < resultA.length; i++){
