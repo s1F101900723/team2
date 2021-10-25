@@ -47,14 +47,7 @@
         </form>
         <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
 
-        <script src="app.js">
-            const $form = $('#form')
-            $('.btn-send').on('click', evt => {
-            $form.submit()
-            $form[0].reset()
-            return false
-            })
-        </script>
+        <script src="app.js"></script>
     </body>
 
 
@@ -76,6 +69,14 @@
                 var a=document.getElementById('name').value;
                 console.log(a);
             });
+        
+        
+            const $form = $('#form')
+            $('.btn-send').on('click', evt => {
+                $form.submit()
+                $form[0].reset()
+                return false
+            })
     </script>
 
 </html>
