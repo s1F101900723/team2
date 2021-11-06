@@ -1,6 +1,33 @@
 * {
     box-sizing: border-box;
   }
+
+.heart_off {
+  width: 24px; /* pathのサイズ */
+  height: 24px; /* pathのサイズ */
+  background: #ffffff; /* 色 */
+  clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
+  transform: scale(1);
+}
+.heart_on {
+  width: 24px; /* pathのサイズ */
+  height: 24px; /* pathのサイズ */
+  background: #ff0077; /* 色 */
+  clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
+  transform: scale(1);
+}
+.heart_box{
+  margin: 0px 20px;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  justify-content:flex-end;
+}
+p.heart_num{
+  margin-bottom: 0;
+}
+
+
   .item_box{
     vertical-align: top;
     background-color: rgba(0, 217, 255, 0.308);
@@ -10,11 +37,13 @@
     
   }
   .middle_box{
+    width: 320px;
+
     background-color: cadetblue;
     display: inline-block;
     vertical-align: top;
     font-size: 0;
-    margin:0 auto
+    margin:0 auto;
   }
   .main{
     margin-top: 60px;
@@ -37,31 +66,7 @@
     line-height: 60px;
     background-color: sandybrown;
   }
-  @media (max-width: 639px) {
-    .main{
-      width: 320px;
-    }
-  }
-  @media (min-width: 639px) and (max-width: 959px) {
-    .main{
-      width: 640px;
-    }
-  }
-  @media (max-width: 1279px) {
-    .middle_box{
-      width: 320px;
-    }
-  }
-  @media (min-width: 1280px) and (max-width: 1599px) {
-    .middle_box{
-      width: 640px;
-    }
-  }
-  @media (min-width: 1600px) {
-    .middle_box{
-      width: 960px;
-    }
-  }
+
   .right_box{
     background-color: rgb(120, 120, 202);
     display: inline-block;
@@ -79,6 +84,7 @@
     vertical-align: top;
     font-size: 16px;
     margin:0 auto
+    
   }
   body {
     font-size: 0;

@@ -52,13 +52,15 @@
 
 <div class="main">
     <div class="left_box">
-
+      <div class="heart_box">
+        <div class="heart_on"></div><div class="heart_off"></div><p class="heart_num">num</p>
+      </div>
     </div>
+
     <div class="middle_box">
         <div class="item_box" style="height: 200px;"></div>
         <div class="item_box">
             <div id="detail_article"></div>
-            <a class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>
             <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -78,7 +80,7 @@
                                 <label>Qid<input name="form_Qid" id="form-Qid" value="none"></label>
                             </div>
                             <div class="form-group modal-body">
-                                <label>Aid<input name="form_Aid" id="form-Aid" value=""></label>
+                                <label>Aid<input name="form_Aid" id="form-Aid"></label>
                             </div>
                             <div class="form_group modal-body">
                                 <label>内容<textarea name="form_text" id="form_text" value="内容" style="display: none;"></textarea>
@@ -86,7 +88,7 @@
                             </div>
 
                             <div class="form-group modal-footer">
-                                <input type="submit" value="送信する" class="btn btn-primary btn-send" data-dismiss="modal">
+                                <input type="submit" value="送信する" class="btn btn-primary btn-send" data-dismiss="modal" id="btn-send">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
                             </div>
                         </form>
@@ -184,6 +186,9 @@
 
 
     <script>
+
+
+
         var str=location.href;
         var url = Number(location.search.substring(4));//idが整数の場合
         let result = str.split("/").filter(e => Boolean(e));
@@ -191,56 +196,85 @@
         console.log(url);
         console.log(last_url);
         document.getElementById('form-Qid').value = url;
+
+        //送信5秒後にjsonを再読み込み
+        let btn = document.getElementById('btn-send');
+          btn.addEventListener('click', function(){
+              window.setTimeout(function(){
+                  load_sheet();
+              }, 5000);
+        });
         
+        window.onload = function(){
+          //60000ミリ秒（60秒）毎に関数を呼び出す
+          setInterval("load_sheet()", 60000);
+        }
+        function FormGetAid(Aid_num){
+          document.getElementById('form-Aid').value = Aid_num;
+          //console.log(Aid_num);
+        }
         //GASのAPIのURL（各自変更してください。）
-        const endpoint =
+        function load_sheet(){
+            var endpoint =
             "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";//WebAPIのURL
     
-        //APIを使って非同期データを取得する
-        fetch(endpoint)
-            .then(response => response.json())
-            /*成功した処理*/
-            .then(data => {
-                //JSONから配列に変換
-                console.log(data);
-                var UserList = data[0];
-                var AList = data[1];
-                var QList = data[2];
-                //var resultQ = data[2].filter(value => value.name === 'user');
-                console.log(UserList);
-                console.log(AList);
-                console.log(QList);
+            //APIを使って非同期データを取得する
 
-                let htmltext = "";
-                console.log(typeof(url));
-                var resultQ = QList.filter(value => value.qid === url);
-                console.log(resultQ);
-                var resultA = AList.filter(value => value.qid === url);
-                console.log(resultA);
-                htmltext += '<p>質問</p>';
-                for (let i = 0; i < resultA.length; i++){
-                    htmltext += '<p>'+resultA[i].uid+'</p>';
-                    htmltext += '<p>'+resultA[i].text+'</p>';
-                }
-                document.getElementById("detail_article").innerHTML = htmltext;
+            fetch(endpoint)
+                .then(response => response.json())
+                /*成功した処理*/
+                .then(data => {
+                    //JSONから配列に変換
+                    console.log(data);
+                    var UserList = data[0];
+                    var AList = data[1];
+                    var QList = data[2];
+                    //var resultQ = data[2].filter(value => value.name === 'user');
+                    //console.log(UserList);
+                    //console.log(AList);
+                    //console.log(QList);
 
-                quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
-                //document.getElementById("editor").innerHTML = resultA[2].text;
-    
-            });
-    
+                    let htmltext = "";
+                    //console.log(typeof(url));
+                    var resultQ = QList.filter(value => value.qid === url);
+                    console.log(resultQ);
+                    var resultA = AList.filter(value => value.qid === url);
+                    //console.log(resultA);
+                    htmltext += '<p>質問</p>';
+                    htmltext += '<p>' + resultQ[0].title + '</p>';
+                    htmltext += '<p>' + resultQ[0].text + '</p>';
+                    htmltext += '<a class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
+                    for (let i = 0; i < resultA.length; i++){
+                        htmltext += '<p>'+resultA[i].uid+'</p>';
+                        htmltext += '<p>'+resultA[i].text+'</p>';
+
+                        htmltext += '<a onclick="javascript:FormGetAid('+resultA[i].aid+');" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
+                        htmltext += '<div class="heart_box"><div class="heart_on"></div><div class="heart_off"></div><p class="heart_num">num</p></div>';
+                    }
+                    document.getElementById("detail_article").innerHTML = htmltext;
+                    //console.log(htmltext);
+                    quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
+                    //document.getElementById("editor").innerHTML = resultA[2].text;
+        
+                });
+        }
+        
+
+        load_sheet();
     
         const $form = $('#form')
         $('.btn-send').on('click', evt => {
             $("#form_text").val(quill.root.innerHTML);
-            $form.submit()
-            $form[0].reset()
+            $form.submit();
+            $form[0].reset();
+            document.getElementById('form-Qid').value = url;
             $('#testModal').modal('hide');
             return false
         })
 
 
     </script>
+    
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
     var toolbarOptions = [
@@ -275,6 +309,54 @@
     </script>
     <script src="app.js"></script>
     <script src="menu.js"></script>
+
+    <style>
+
+        @media (max-width: calc(639px - 100vw - 100%)) {
+            div.main{
+              width: 320px;
+            }
+          }
+          @media (min-width: calc(640px - 100vw - 100%)) and (max-width: calc(959px + (100vw - 100%))) {
+            div.main{
+              width: 640px;
+            }
+          }
+          @media (max-width: calc(1279px + 100vw - 100%)) {
+            div.middle_box{
+              width: 320px;
+            }
+          }
+          @media (min-width: calc(1280px + 100vw - 100%)) and (max-width: calc(1599px + 100vw - 100%)) {
+            div.middle_box{
+              width: 640px;
+            }
+          }
+          @media (min-width: calc(1600px + 100vw - 100%)) {
+            div.middle_box{
+              width: 960px;
+            }
+          }
+
+    </style>
+    <script>
+      var scroll_bar = window.innerWidth - document.body.clientWidth;
+      console.log(scroll_bar,"px");
+
+      window.onresize = resizeWindow;
+      function resizeWindow(){
+        var scroll_bar = window.innerWidth - document.body.clientWidth;
+        console.log(scroll_bar,"px");
+      }
+
+      jQuery.fn.hasScrollBar = function() {
+          return this.get(0) ? this.get(0).scrollHeight > this.innerHeight() : false;
+      }
+
+      if($('body').hasScrollBar()){
+          console.log("スクロールバーあるよ")
+      }
+    </script>
 </body>
 
 </html>
