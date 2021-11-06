@@ -243,12 +243,12 @@
                     htmltext += '<p>質問</p>';
                     htmltext += '<p>' + resultQ[0].title + '</p>';
                     htmltext += '<p>' + resultQ[0].text + '</p>';
-                    htmltext += '<a class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
+                    htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
                     for (let i = 0; i < resultA.length; i++){
                         htmltext += '<p>'+resultA[i].uid+'</p>';
                         htmltext += '<p>'+resultA[i].text+'</p>';
 
-                        htmltext += '<a onclick="javascript:FormGetAid('+resultA[i].aid+');" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
+                        htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
                         htmltext += '<div class="heart_box"><div class="heart_on"></div><div class="heart_off"></div><p class="heart_num">num</p></div>';
                     }
                     document.getElementById("detail_article").innerHTML = htmltext;
