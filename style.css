@@ -37,7 +37,6 @@ p.heart_num{
     
   }
   .middle_box{
-    width: 320px;
 
     background-color: cadetblue;
     display: inline-block;
@@ -47,6 +46,7 @@ p.heart_num{
   }
   .main{
     margin-top: 60px;
+
   }
   header{
     position:fixed;
@@ -292,4 +292,45 @@ opacity: 0;
   left: 18px;
   transform: translateY(-6px) rotate(45deg);
   width: 30%;
+}
+
+
+
+@media (max-width: 679.9px) {
+  .main{
+    width: 320px;
+  }
+}
+@media (min-width: 680px) and (max-width: 999.9px) {
+  .main{
+    width: 640px;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1319.9px) {
+  .main{
+    width: 960px;
+  }
+}
+@media (min-width: 1320px) and (max-width: 1639.9px) {
+  .main{
+    width: 1280px;
+  }
+  .middle_box{
+    width: 640px;
+  }
+}
+@media (min-width: 1640px) {
+  .main{
+    width: 1600px;
+    justify-content:center;
+  }
+  .middle_box{
+    width: 960px;
+  }
+}
+
+@media (max-width: 1319.9px) {
+  .middle_box{
+    width: 320px;
+  }
 }
