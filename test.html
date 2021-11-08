@@ -1,41 +1,95 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mipo</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questa</title>
+  </head>
+  <body>
     <div id="root"></div>
-<script>
-    const endpoint =
-        "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";//WebAPIのURL
+    <div>
+      <h2>ranking</h2>
+      <ul id="ranking"></ul>
+    </div>
+    <script>
+      //クイックソート関数
+      function quickSort(profile, startID = 0, endID = profile.length - 1) {
+        var pivot = profile[Math.floor((startID + endID) / 2)].point;
+        var left = startID;
+        var right = endID;
 
-    //APIを使って非同期データを取得する
-    fetch(endpoint)
-        .then(response => response.json())
+        while (true) {
+          while (profile[left].point < pivot) {
+            left++;
+          }
+          while (pivot < profile[right].point) {
+            right--;
+          }
+          if (right <= left) {
+            break;
+          }
+
+          var tmp = profile[left];
+          profile[left] = profile[right];
+          profile[right] = tmp;
+          left++;
+          right--;
+        }
+
+        if (startID < left - 1) {
+          quickSort(profile, startID, left - 1);
+        }
+        if (right + 1 < endID) {
+          quickSort(profile, right + 1, endID);
+        }
+      }
+
+      const endpoint =
+        "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec"; //WebAPIのURL
+
+      //APIを使って非同期データを取得する
+      fetch(endpoint)
+        .then((response) => response.json())
         /*成功した処理*/
-        .then(data => {
-            //JSONから配列に変換
-            // var result = data.filter(value => value.name === 'user');
-            // console.log(result);
-            // var a=document.getElementById('name').value;
-            // console.log(a);
-            
-            const column = new Object();
-            const result = new Object();
-            column.profile = data[0];
-            column.Q = data[2];
-            column.A = data[1];
-            result.data = column;
-            console.log(result);
+        .then((data) => {
+          //JSONから配列に変換
+          // var result = data.filter(value => value.name === 'user');
+          // console.log(result);
+          // var a=document.getElementById('name').value;
+          // console.log(a);
 
-            const target = document.getElementById("root");
-            result.data.Q.map((e) => {
-                target.innerHTML += "<a href=./detail.html?id=" + e.qid + "><p>" + "Question" + e.qid + "</p></a>";
-            })
-            });
+          const column = new Object();
+          const result = new Object();
+          column.profile = data[0];
+          column.Q = data[2];
+          column.A = data[1];
+          result.data = column;
+          console.log(result);
 
-</script>
-</body>
+          const target = document.getElementById("root");
+          result.data.Q.map((e) => {
+            target.innerHTML +=
+              "<a href=./detail.html?id=" +
+              e.qid +
+              "><p>" +
+              "Question" +
+              e.qid +
+              "</p></a>";
+          });
+          const dummyProfile = [
+            { point: 10, name: "name" },
+            { point: 123, name: "name" },
+            { point: 122, name: "name" },
+            { point: 12, name: "name" },
+            { point: 1, name: "name" },
+          ];
+          quickSort(dummyProfile);
+          const rankingTarget = document.getElementById("ranking");
+          dummyProfile.reverse().map((e, i) => {
+            if ((i+1) > 3) return 
+            rankingTarget.innerHTML += "<li>" + (i + 1) + "位"　+ "user : " + e.name + " point : " + e.point + "</li>";
+          });
+        });
+    </script>
+  </body>
+</html>
