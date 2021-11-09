@@ -225,7 +225,6 @@
           setInterval("load_sheet()", 60000);
         }
         function FormGetAid(Aid_num){
-          
           var form_Aid = document.getElementsByClassName('form-Aid');
           for (var i = 0; i < form_Aid.length; i++){
             form_Aid[i].value= Aid_num;
@@ -261,6 +260,22 @@
         }
 
         //GASのAPIのURL（各自変更してください。）
+        function getpretext(num){
+          var endpoint =
+            "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";
+            fetch(endpoint)
+                .then(response => response.json())
+                /*成功した処理*/
+                .then(data => {
+                    //JSONから配列に変換
+                    var AList = data[1];
+                    var pretext_A=AList.filter(value => {if(value.qid === url && value.aid === num){
+                      return true;
+                    }});
+                    quill.clipboard.dangerouslyPasteHTML(pretext_A[0].text);
+                });
+            FormGetAid(num);
+        }
         function load_sheet(){
             var endpoint =
             "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";//WebAPIのURL
@@ -287,7 +302,7 @@
                     var resultQ = QList.filter(value => value.qid === url);
                     console.log(resultQ);
                     var resultA = AList.filter(value => value.qid === url);
-                    //console.log(resultA);
+                    console.log(resultA);
                     htmltext += '<p>質問</p>';
                     htmltext += '<p>' + resultQ[0].title + '</p>';
                     htmltext += '<p>' + resultQ[0].text + '</p>';
@@ -296,8 +311,8 @@
                         htmltext += '<p>'+resultA[i].uid+'</p>';
                         htmltext += '<p>'+resultA[i].text+'</p>';
 
-                        htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
-                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">num</p></div>';
+                        htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
+                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
                     }
                     document.getElementById("detail_article").innerHTML = htmltext;
                     //console.log(htmltext);
