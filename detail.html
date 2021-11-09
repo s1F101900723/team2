@@ -30,6 +30,7 @@
     <link type="text/css" rel="stylesheet" href="dist/firebaseui.css" /-->
     <script src="https://www.gstatic.com/firebasejs/ui/5.0.0/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/5.0.0/firebase-ui-auth.css" />
+    <script src="app.js"></script>
 </head>
 
 <body>
@@ -52,13 +53,23 @@
 
 <div class="main">
     <div class="left_box">
-
+      <div class="heart_box">
+        <div class="heart_on"></div><div class="heart_off"></div><p class="heart_num" style="display: none;">num</p>
+      </div>
     </div>
+
     <div class="middle_box">
-        <div class="item_box" style="height: 200px;"></div>
+        <div class="item_box" style="height: 200px;">
+        </div>
         <div class="item_box">
+            <form style="display: none;" name="likeform" action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec" method="POST" target="sendPhoto">
+              <input name="form" value="like">
+              <input name="form_like" class="form-like">
+              <input name="form_uid" class="form-uid uid" value="none">
+              <input name="form_Qid" class="form-Qid" value="none">
+              <input name="form_Aid" class="form-Aid">
+            </form>
             <div id="detail_article"></div>
-            <a class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>
             <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -72,13 +83,13 @@
                                 <label>フォームの種類<input name="form" value="answer"></label>
                             </div>
                             <div class="form-group modal-body">
-                                <label>uid<input name="form_uid" id="form-uid" value="none"></label>
+                                <label>uid<input name="form_uid" id="form-uid" value="none" class="uid"></label>
                             </div>
                             <div class="form-group modal-body">
-                                <label>Qid<input name="form_Qid" id="form-Qid" value="none"></label>
+                                <label>Qid<input name="form_Qid" class="form-Qid" value="none"></label>
                             </div>
                             <div class="form-group modal-body">
-                                <label>Aid<input name="form_Aid" id="form-Aid" value=""></label>
+                                <label>Aid<input name="form_Aid" class="form-Aid"></label>
                             </div>
                             <div class="form_group modal-body">
                                 <label>内容<textarea name="form_text" id="form_text" value="内容" style="display: none;"></textarea>
@@ -86,7 +97,7 @@
                             </div>
 
                             <div class="form-group modal-footer">
-                                <input type="submit" value="送信する" class="btn btn-primary btn-send" data-dismiss="modal">
+                                <input type="submit" value="送信する" class="btn btn-primary btn-send" data-dismiss="modal" id="btn-send">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
                             </div>
                         </form>
@@ -184,63 +195,168 @@
 
 
     <script>
+
+
+
         var str=location.href;
         var url = Number(location.search.substring(4));//idが整数の場合
         let result = str.split("/").filter(e => Boolean(e));
         let last_url=result[result.length - 1];
         console.log(url);
         console.log(last_url);
-        document.getElementById('form-Qid').value = url;
+        //document.getElementById('form-Qid').value = url;
+        var form_Qid = document.getElementsByClassName('form-Qid');
+        for (var i = 0; i < form_Qid.length; i++){
+          form_Qid[i].textContent= url;
+          form_Qid[i].value= url;
+        }
+
+        //送信5秒後にjsonを再読み込み
+        let btn = document.getElementById('btn-send');
+          btn.addEventListener('click', function(){
+              window.setTimeout(function(){
+                  load_sheet();
+              }, 5000);
+        });
         
+        window.onload = function(){
+          //60000ミリ秒（60秒）毎に関数を呼び出す
+          setInterval("load_sheet()", 60000);
+        }
+        function FormGetAid(Aid_num){
+          var form_Aid = document.getElementsByClassName('form-Aid');
+          for (var i = 0; i < form_Aid.length; i++){
+            form_Aid[i].value= Aid_num;
+          }
+          //document.getElementById('form-Aid').value = Aid_num;
+          //quill.clipboard.dangerouslyPasteHTML(pretext);
+          //console.log(Aid_num);
+        }
+
+        function Onheart(num){
+          FormGetAid(num);
+          var form_Like = document.getElementsByClassName('form-like');
+          for (var i = 0; i < form_Like.length; i++){
+            form_Like[i].value= 0;
+          }
+          document.likeform.submit();
+          var target_on = document.getElementsByClassName('heart_on '+num+'');
+          var target_off = document.getElementsByClassName('heart_off '+num+'');
+          target_on[0].style.display = "none";
+          target_off[0].style.display = "block";
+        }
+        function Offheart(num){
+          FormGetAid(num);
+          var form_Like = document.getElementsByClassName('form-like');
+          for (var i = 0; i < form_Like.length; i++){
+            form_Like[i].value= 1;
+          }
+          document.likeform.submit();
+          var target_on = document.getElementsByClassName('heart_on '+num+'');
+          var target_off = document.getElementsByClassName('heart_off '+num+'');
+          target_on[0].style.display = "block";
+          target_off[0].style.display = "none";
+        }
+
         //GASのAPIのURL（各自変更してください。）
-        const endpoint =
+        function getpretext(num){
+          var endpoint =
+            "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";
+            fetch(endpoint)
+                .then(response => response.json())
+                /*成功した処理*/
+                .then(data => {
+                    //JSONから配列に変換
+                    var AList = data[1];
+                    var pretext_A=AList.filter(value => {if(value.qid === url && value.aid === num){
+                      return true;
+                    }});
+                    quill.clipboard.dangerouslyPasteHTML(pretext_A[0].text);
+                });
+            FormGetAid(num);
+        }
+        function load_sheet(){
+            var endpoint =
             "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";//WebAPIのURL
     
-        //APIを使って非同期データを取得する
-        fetch(endpoint)
-            .then(response => response.json())
-            /*成功した処理*/
-            .then(data => {
-                //JSONから配列に変換
-                console.log(data);
-                var UserList = data[0];
-                var AList = data[1];
-                var QList = data[2];
-                //var resultQ = data[2].filter(value => value.name === 'user');
-                console.log(UserList);
-                console.log(AList);
-                console.log(QList);
+            //APIを使って非同期データを取得する
 
-                let htmltext = "";
-                console.log(typeof(url));
-                var resultQ = QList.filter(value => value.qid === url);
-                console.log(resultQ);
-                var resultA = AList.filter(value => value.qid === url);
-                console.log(resultA);
-                htmltext += '<p>質問</p>';
-                for (let i = 0; i < resultA.length; i++){
-                    htmltext += '<p>'+resultA[i].uid+'</p>';
-                    htmltext += '<p>'+resultA[i].text+'</p>';
-                }
-                document.getElementById("detail_article").innerHTML = htmltext;
+            fetch(endpoint)
+                .then(response => response.json())
+                /*成功した処理*/
+                .then(data => {
+                    //JSONから配列に変換
+                    //console.log(data);
+                    var UserList = data[0];
+                    var AList = data[1];
+                    var QList = data[2];
+                    var LIKEList = data[3];
+                    //var resultQ = data[2].filter(value => value.name === 'user');
+                    //console.log(UserList);
+                    //console.log(AList);
+                    //console.log(QList);
 
-                quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
-                //document.getElementById("editor").innerHTML = resultA[2].text;
-    
-            });
-    
+                    let htmltext = "";
+                    //console.log(typeof(url));
+                    var resultQ = QList.filter(value => value.qid === url);
+                    //console.log(resultQ);
+                    var resultA = AList.filter(value => value.qid === url);
+                    //console.log(resultA);
+                    var resultLIKE = LIKEList.filter(value => {if(value.uid === GlobalUid && value.qid === url && value.like_num === 1){
+                      return true;
+                    }});
+                    console.log(resultLIKE);
+                    var LIKE_aid = resultLIKE.map(value => value["aid"]);
+                    console.log(LIKE_aid);
+                    htmltext += '<p>質問</p>';
+                    htmltext += '<p>' + resultQ[0].title + '</p>';
+                    htmltext += '<p>' + resultQ[0].text + '</p>';
+                    htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
+                    for (let i = 0; i < resultA.length; i++){
+                      if(LIKE_aid.includes(resultA[i].aid)==true){
+                        htmltext += '<p>'+resultA[i].uid+'</p>';
+                        htmltext += '<p>'+resultA[i].text+'</p>';
+
+                        htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
+                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
+                        
+                      }
+                      else{
+                        htmltext += '<p>'+resultA[i].uid+'</p>';
+                        htmltext += '<p>'+resultA[i].text+'</p>';
+
+                        htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
+                        htmltext += '<div class="heart_box"><div style="display: none;" class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
+                      }
+                    }
+                    document.getElementById("detail_article").innerHTML = htmltext;
+                    //console.log(htmltext);
+                    //quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
+                    //document.getElementById("editor").innerHTML = resultA[2].text;
+        
+                });
+        }
+        
+
+        load_sheet();
     
         const $form = $('#form')
         $('.btn-send').on('click', evt => {
             $("#form_text").val(quill.root.innerHTML);
-            $form.submit()
-            $form[0].reset()
+            $form.submit();
+            $form[0].reset();
+            //document.getElementById('form-Qid').value = url;
+            for (var i = 0; i < form_Qid.length; i++){
+              form_Qid[i].textContent= url;
+              form_Qid[i].value= url;
+            }
             $('#testModal').modal('hide');
             return false
         })
 
 
     </script>
+    
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
     var toolbarOptions = [
@@ -273,8 +389,9 @@
     console.log(quill);
     
     </script>
-    <script src="app.js"></script>
+    <!--script src="app.js"></script-->
     <script src="menu.js"></script>
+
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+var GlobalUid;
+
 /*
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -146,6 +148,7 @@
     document.getElementById('user-signed-out').style.display = 'none';
     document.getElementById('name').textContent = user.displayName;
     //document.getElementById('form-uid').value = user.uid;
+    GlobalUid = user.uid;//グローバル変数でuidを設定
     var elems = document.getElementsByClassName('uid');
     for (var i = 0; i < elems.length; i++){
       elems[i].textContent= user.uid;
