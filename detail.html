@@ -54,7 +54,7 @@
 <div class="main">
     <div class="left_box">
       <div class="heart_box">
-        <div class="heart_on"></div><div class="heart_off"></div><p class="heart_num">num</p>
+        <div class="heart_on"></div><div class="heart_off"></div><p class="heart_num" style="display: none;">num</p>
       </div>
     </div>
 
@@ -320,22 +320,15 @@
                         htmltext += '<p>'+resultA[i].text+'</p>';
 
                         htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
-                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
-                        var target_on = document.getElementsByClassName('heart_on '+resultA[i].aid+'');
-                        var target_off = document.getElementsByClassName('heart_off '+resultA[i].aid+'');
-                        target_on[0].style.display = "block";
-                        target_off[0].style.display = "none";
+                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
+                        
                       }
                       else{
                         htmltext += '<p>'+resultA[i].uid+'</p>';
                         htmltext += '<p>'+resultA[i].text+'</p>';
 
                         htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
-                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
-                        var target_on = document.getElementsByClassName('heart_on '+resultA[i].aid+'');
-                        var target_off = document.getElementsByClassName('heart_off '+resultA[i].aid+'');
-                        target_on[0].style.display = "none";
-                        target_off[0].style.display = "block";
+                        htmltext += '<div class="heart_box"><div style="display: none;" class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
                       }
                     }
                     document.getElementById("detail_article").innerHTML = htmltext;
