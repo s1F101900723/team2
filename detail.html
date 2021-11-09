@@ -236,6 +236,7 @@
         }
 
         function Onheart(num){
+          FormGetAid(num);
           var form_Like = document.getElementsByClassName('form-like');
           for (var i = 0; i < form_Like.length; i++){
             form_Like[i].value= 0;
@@ -247,6 +248,7 @@
           target_off[0].style.display = "block";
         }
         function Offheart(num){
+          FormGetAid(num);
           var form_Like = document.getElementsByClassName('form-like');
           for (var i = 0; i < form_Like.length; i++){
             form_Like[i].value= 1;
