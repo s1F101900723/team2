@@ -61,7 +61,7 @@
         <div class="item_box" style="height: 200px;">
           <form name="likeform" action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec" method="POST" target="sendPhoto">
             <input name="form" value="like">
-            <input name="form_like" class="form-like" value="0">
+            <input name="form_like" class="form-like">
             <input name="form_uid" class="form-uid uid" value="none">
             <input name="form_Qid" class="form-Qid" value="none">
             <input name="form_Aid" class="form-Aid">
@@ -236,6 +236,10 @@
         }
 
         function Onheart(num){
+          var form_Like = document.getElementsByClassName('form-like');
+          for (var i = 0; i < form_Like.length; i++){
+            form_Like[i].value= 0;
+          }
           document.likeform.submit();
           var target_on = document.getElementsByClassName('heart_on '+num+'');
           var target_off = document.getElementsByClassName('heart_off '+num+'');
@@ -243,6 +247,10 @@
           target_off[0].style.display = "block";
         }
         function Offheart(num){
+          var form_Like = document.getElementsByClassName('form-like');
+          for (var i = 0; i < form_Like.length; i++){
+            form_Like[i].value= 1;
+          }
           document.likeform.submit();
           var target_on = document.getElementsByClassName('heart_on '+num+'');
           var target_off = document.getElementsByClassName('heart_off '+num+'');
