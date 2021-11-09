@@ -308,14 +308,13 @@
                       return true;
                     }});
                     console.log(resultLIKE);
+                    var LIKE_aid = resultLIKE.map(value => value["aid"]);
+                    console.log(LIKE_aid);
                     htmltext += '<p>質問</p>';
                     htmltext += '<p>' + resultQ[0].title + '</p>';
                     htmltext += '<p>' + resultQ[0].text + '</p>';
                     htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
                     for (let i = 0; i < resultA.length; i++){
-                      console.log(resultLIKE.aid);
-
-                        
                         htmltext += '<p>'+resultA[i].uid+'</p>';
                         htmltext += '<p>'+resultA[i].text+'</p>';
 
