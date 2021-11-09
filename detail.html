@@ -288,7 +288,7 @@
                 /*成功した処理*/
                 .then(data => {
                     //JSONから配列に変換
-                    console.log(data);
+                    //console.log(data);
                     var UserList = data[0];
                     var AList = data[1];
                     var QList = data[2];
@@ -301,19 +301,21 @@
                     let htmltext = "";
                     //console.log(typeof(url));
                     var resultQ = QList.filter(value => value.qid === url);
-                    console.log(resultQ);
+                    //console.log(resultQ);
                     var resultA = AList.filter(value => value.qid === url);
-                    console.log(resultA);
-                    var resultLIKE = LIKEList.filter(value => {if(value.like_num === GlobalUid && value.qid === url){
+                    //console.log(resultA);
+                    var resultLIKE = LIKEList.filter(value => {if(value.uid === GlobalUid && value.qid === url){
                       return true;
                     }});
-                    console.log(resultLIKE);
+                    //console.log(resultLIKE);
                     htmltext += '<p>質問</p>';
                     htmltext += '<p>' + resultQ[0].title + '</p>';
                     htmltext += '<p>' + resultQ[0].text + '</p>';
                     htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
                     for (let i = 0; i < resultA.length; i++){
-
+                      if(resultLIKE){
+                        //console.log(GlobalUid);
+                      }
                         
                         htmltext += '<p>'+resultA[i].uid+'</p>';
                         htmltext += '<p>'+resultA[i].text+'</p>';
