@@ -308,6 +308,7 @@
                     htmltext += '<p>' + resultQ[0].text + '</p>';
                     htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
                     for (let i = 0; i < resultA.length; i++){
+                      
                         htmltext += '<p>'+resultA[i].uid+'</p>';
                         htmltext += '<p>'+resultA[i].text+'</p>';
 
@@ -377,24 +378,6 @@
     <script src="app.js"></script>
     <script src="menu.js"></script>
 
-    <!--script>
-      var scroll_bar = window.innerWidth - document.body.clientWidth;
-      console.log(scroll_bar,"px");
-
-      window.onresize = resizeWindow;
-      function resizeWindow(){
-        var scroll_bar = window.innerWidth - document.body.clientWidth;
-        console.log(scroll_bar,"px");
-      }
-
-      jQuery.fn.hasScrollBar = function() {
-          return this.get(0) ? this.get(0).scrollHeight > this.innerHeight() : false;
-      }
-
-      if($('body').hasScrollBar()){
-          console.log("スクロールバーあるよ")
-      }
-    </script-->
 </body>
 
 </html>
