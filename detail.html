@@ -304,7 +304,7 @@
                     //console.log(resultQ);
                     var resultA = AList.filter(value => value.qid === url);
                     //console.log(resultA);
-                    var resultLIKE = LIKEList.filter(value => {if(value.uid === GlobalUid && value.qid === url){
+                    var resultLIKE = LIKEList.filter(value => {if(value.uid === GlobalUid && value.qid === url && value.like_num === 1){
                       return true;
                     }});
                     console.log(resultLIKE);
@@ -313,9 +313,8 @@
                     htmltext += '<p>' + resultQ[0].text + '</p>';
                     htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
                     for (let i = 0; i < resultA.length; i++){
-                      if(resultLIKE){
-                        //console.log(GlobalUid);
-                      }
+                      console.log(resultLIKE.aid);
+
                         
                         htmltext += '<p>'+resultA[i].uid+'</p>';
                         htmltext += '<p>'+resultA[i].text+'</p>';
