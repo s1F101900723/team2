@@ -58,7 +58,17 @@
     </div>
 
     <div class="middle_box">
-        <div class="item_box" style="height: 200px;"></div>
+        <div class="item_box" style="height: 200px;">
+          <form name="likeform" action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec" method="POST" target="sendPhoto">
+            <input name="form" value="like">
+            <input name="form_like" class="form-like" value="0">
+            <input name="form_uid" class="form-uid uid" value="none">
+            <input name="form_Qid" class="form-Qid" value="none">
+            <input name="form_Aid" class="form-Aid">
+
+
+          </form>
+        </div>
         <div class="item_box">
             <div id="detail_article"></div>
             <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -77,10 +87,10 @@
                                 <label>uid<input name="form_uid" id="form-uid" value="none" class="uid"></label>
                             </div>
                             <div class="form-group modal-body">
-                                <label>Qid<input name="form_Qid" id="form-Qid" value="none"></label>
+                                <label>Qid<input name="form_Qid" class="form-Qid" value="none"></label>
                             </div>
                             <div class="form-group modal-body">
-                                <label>Aid<input name="form_Aid" id="form-Aid"></label>
+                                <label>Aid<input name="form_Aid" class="form-Aid"></label>
                             </div>
                             <div class="form_group modal-body">
                                 <label>内容<textarea name="form_text" id="form_text" value="内容" style="display: none;"></textarea>
@@ -195,7 +205,12 @@
         let last_url=result[result.length - 1];
         console.log(url);
         console.log(last_url);
-        document.getElementById('form-Qid').value = url;
+        //document.getElementById('form-Qid').value = url;
+        var form_Qid = document.getElementsByClassName('form-Qid');
+        for (var i = 0; i < form_Qid.length; i++){
+          form_Qid[i].textContent= url;
+          form_Qid[i].value= url;
+        }
 
         //送信5秒後にjsonを再読み込み
         let btn = document.getElementById('btn-send');
@@ -210,9 +225,31 @@
           setInterval("load_sheet()", 60000);
         }
         function FormGetAid(Aid_num){
-          document.getElementById('form-Aid').value = Aid_num;
+          
+          var form_Aid = document.getElementsByClassName('form-Aid');
+          for (var i = 0; i < form_Aid.length; i++){
+            form_Aid[i].value= Aid_num;
+          }
+          //document.getElementById('form-Aid').value = Aid_num;
+          //quill.clipboard.dangerouslyPasteHTML(pretext);
           //console.log(Aid_num);
         }
+
+        function Onheart(num){
+          document.likeform.submit();
+          var target_on = document.getElementsByClassName('heart_on '+num+'');
+          var target_off = document.getElementsByClassName('heart_off '+num+'');
+          target_on[0].style.display = "none";
+          target_off[0].style.display = "block";
+        }
+        function Offheart(num){
+          document.likeform.submit();
+          var target_on = document.getElementsByClassName('heart_on '+num+'');
+          var target_off = document.getElementsByClassName('heart_off '+num+'');
+          target_on[0].style.display = "block";
+          target_off[0].style.display = "none";
+        }
+
         //GASのAPIのURL（各自変更してください。）
         function load_sheet(){
             var endpoint =
@@ -229,6 +266,7 @@
                     var UserList = data[0];
                     var AList = data[1];
                     var QList = data[2];
+                    var LIKEList = data[3];
                     //var resultQ = data[2].filter(value => value.name === 'user');
                     //console.log(UserList);
                     //console.log(AList);
@@ -249,11 +287,11 @@
                         htmltext += '<p>'+resultA[i].text+'</p>';
 
                         htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
-                        htmltext += '<div class="heart_box"><div class="heart_on"></div><div class="heart_off"></div><p class="heart_num">num</p></div>';
+                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">num</p></div>';
                     }
                     document.getElementById("detail_article").innerHTML = htmltext;
                     //console.log(htmltext);
-                    quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
+                    //quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
                     //document.getElementById("editor").innerHTML = resultA[2].text;
         
                 });
@@ -267,7 +305,11 @@
             $("#form_text").val(quill.root.innerHTML);
             $form.submit();
             $form[0].reset();
-            document.getElementById('form-Qid').value = url;
+            //document.getElementById('form-Qid').value = url;
+            for (var i = 0; i < form_Qid.length; i++){
+              form_Qid[i].textContent= url;
+              form_Qid[i].value= url;
+            }
             $('#testModal').modal('hide');
             return false
         })
@@ -309,7 +351,6 @@
     </script>
     <script src="app.js"></script>
     <script src="menu.js"></script>
-
 
     <!--script>
       var scroll_bar = window.innerWidth - document.body.clientWidth;
