@@ -46,7 +46,7 @@
                       <label>フォームの種類<input name="form" value="profile"></label>
                   </div>
                   <div class="form-group ">
-                      <label>uid<input name="form_uid" id="form-uid" value="none"></label>
+                      <label>uid<input name="form_uid" id="form-uid" value="none" class="uid"></label>
                   </div>
                   <div class="form-group ">
                       <label>ユーザー名<input name="form_name" id="form-name" value="none"></label>
@@ -61,7 +61,7 @@
                 </div>
                 <div id="name"></div>
                 <div id="email"></div>
-                <div id="uid"></div>
+                <div id="uid" class="uid"></div>
                 <div id="phone"></div>
                 <div id="is-new-user"></div>
                 <div class="clearfix"></div>
@@ -132,11 +132,19 @@
         /*成功した処理*/
         .then(data => {
             //JSONから配列に変換
-            console.log(data);
-            var result = data.filter(value => value.name === 'user');
+            // var result = data.filter(value => value.name === 'user');
+            // console.log(result);
+            // var a=document.getElementById('name').value;
+            // console.log(a);
+            
+            const column = new Object();
+            const result = new Object();
+            column.profile = data[0];
+            column.Q = data[1];
+            column.A = data[2];
+            result.data = column;
             console.log(result);
-            var a=document.getElementById('name').value;
-            console.log(a);
+            
 
         });
 
