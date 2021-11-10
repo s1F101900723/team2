@@ -1,7 +1,10 @@
 * {
     box-sizing: border-box;
   }
-
+#container{
+  font-size: 24px;
+  width: 320px;
+}
 .heart_off {
   width: 24px; /* pathのサイズ */
   height: 24px; /* pathのサイズ */
