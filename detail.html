@@ -268,7 +268,7 @@
                 .then(data => {
                     //JSONから配列に変換
                     var AList = data[1];
-                    var pretext_A=AList.filter(value => {if(value.qid === url && value.aid === num){
+                    var pretext_A=AList.filter(value => {if(value.qid === url && value.aid === num && value.uid === GlobalUid){
                       return true;
                     }});
                     quill.clipboard.dangerouslyPasteHTML(pretext_A[0].text);
