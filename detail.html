@@ -132,7 +132,7 @@
 </div>
 </nav>
 <div class="circle-bg"></div>
-
+<!--  ここから -->
 <div class="main">
     <div class="left_box">
       <div class="heart_box">
@@ -187,6 +187,36 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="testpointModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4><div class="modal-title">ポイント付与画面</div></h4>
+                        </div>
+                        <form
+                            action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec"
+                            method="POST" target="sendPhoto" id="pointform" name="AnswerForm">
+                            <div class="form-group modal-body">
+                                <label>フォームの種類<input name="form" value="point"></label>
+                            </div>
+                            <div class="form-group modal-body">
+                                <label>uid<input name="form_uid" value="none" class="uid"></label>
+                            </div>
+                            <div class="form-group modal-body">
+                                <label>Qid<input name="form_Qid" class="form-Qid" value="none"></label>
+                            </div>
+                            <div class="form-group modal-body">
+                                <label>Aid<input name="form_Aid" class="form-Aid"></label>
+                            </div>
+
+                            <div class="form-group modal-footer">
+                                <input type="submit" value="送信する" class="btn btn-primary btn-sendpoint" data-dismiss="modal" id="btn-sendpoint">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="item_box" style="height: 200px;"></div>
     </div>
@@ -194,7 +224,6 @@
         
     </div>
 </div>
-
 
     <script>
 
@@ -321,6 +350,7 @@
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
                         }
+                        htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testpointModal">point</a>';
                         htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
                         
                       }
@@ -330,6 +360,7 @@
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
                         }
+                        htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testpointModal">point</a>';
                         htmltext += '<div class="heart_box"><div style="display: none;" class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
                       }
                     }
@@ -355,6 +386,17 @@
               form_Qid[i].value= url;
             }
             $('#testModal').modal('hide');
+            return false
+        })
+        const $pointform = $('#pointform')
+        $('.btn-sendpoint').on('click', evt => {
+            $pointform.submit();
+            $pointform[0].reset();
+            for (var i = 0; i < form_Qid.length; i++){
+              form_Qid[i].textContent= url;
+              form_Qid[i].value= url;
+            }
+            $('#testpointModal').modal('hide');
             return false
         })
 
