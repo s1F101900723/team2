@@ -48,24 +48,35 @@ p.heart_num{
     margin-top: 60px;
 
   }
-  header{
+  #header{
     position:fixed;
     z-index: 9999;/*ボタンを最前面に*/
     cursor: pointer;
-    background-color: salmon;
+    color: salmon;
+    background-color: white;
     width: 100%;
     height: 60px;
     vertical-align: middle;
   }
 
   p.header{
+    height: 60px;
     margin: 0;
     margin-left: 10px;
-
     font-size: 24px;
-    line-height: 60px;
-    background-color: sandybrown;
+    display: table-cell;
+    vertical-align: middle;
   }
+  img.header{
+    margin: 0;
+    margin-right: 15px;
+    margin-left: 20px;
+    vertical-align: middle;
+    font-size: 0;
+    height: 40px;
+  }
+
+
 
   .right_box{
     background-color: rgb(120, 120, 202);
@@ -90,6 +101,7 @@ p.heart_num{
     font-size: 0;
     display: flex;
     justify-content:center;
+    background-color: #F4F5F7;
   }
   a {
     font-size: 16px;
@@ -304,15 +316,24 @@ opacity: 0;
   .main{
     width: 320px;
   }
+  .moveright{
+    display: none;
+  }
 }
 @media (min-width: 680px) and (max-width: 999.9px) {
   .main{
     width: 640px;
   }
+  .moveright{
+    display: none;
+  }
 }
 @media (min-width: 1000px) and (max-width: 1319.9px) {
   .main{
     width: 960px;
+  }
+  .moveleft{
+    display: none;
   }
 }
 @media (min-width: 1320px) and (max-width: 1639.9px) {
@@ -322,6 +343,9 @@ opacity: 0;
   .middle_box{
     width: 640px;
   }
+  .moveleft{
+    display: none;
+  }
 }
 @media (min-width: 1640px) {
   .main{
@@ -330,6 +354,9 @@ opacity: 0;
   }
   .middle_box{
     width: 960px;
+  }
+  .moveleft{
+    display: none;
   }
 }
 
