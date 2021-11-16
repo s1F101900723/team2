@@ -82,7 +82,7 @@ p.heart_num{
     background-color: rgb(120, 120, 202);
     display: inline-block;
     width: 320px;
-    height: 400px;
+    min-height: 400px;
     vertical-align: top;
     font-size: 16px;
     margin:0 auto
@@ -91,7 +91,7 @@ p.heart_num{
     background-color: cadetblue;
     display: inline-block;
     width: 320px;
-    height: 400px;
+    min-height: 400px;
     vertical-align: top;
     font-size: 16px;
     margin:0 auto
