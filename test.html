@@ -76,16 +76,13 @@
               e.qid +
               "</p></a>";
           });
-          const dummyProfile = [
-            { point: 10, name: "name" },
-            { point: 123, name: "name" },
-            { point: 122, name: "name" },
-            { point: 12, name: "name" },
-            { point: 1, name: "name" },
-          ];
-          quickSort(dummyProfile);
+
+          var resultPointRank = result.data.profile.filter(value => value.point !== '');
+
+          quickSort(resultPointRank);
           const rankingTarget = document.getElementById("ranking");
-          dummyProfile.reverse().map((e, i) => {
+          console.log(resultPointRank);
+          resultPointRank.reverse().map((e, i) => {
             if ((i+1) > 3) return 
             rankingTarget.innerHTML += "<li>" + (i + 1) + "位"　+ "user : " + e.name + " point : " + e.point + "</li>";
           });
