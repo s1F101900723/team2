@@ -1,10 +1,7 @@
 * {
     box-sizing: border-box;
   }
-#container{
-  font-size: 24px;
-  width: 320px;
-}
+
 .heart_off {
   width: 24px; /* pathのサイズ */
   height: 24px; /* pathのサイズ */
@@ -51,30 +48,41 @@ p.heart_num{
     margin-top: 60px;
 
   }
-  header{
+  #header{
     position:fixed;
     z-index: 9999;/*ボタンを最前面に*/
     cursor: pointer;
-    background-color: salmon;
+    color: salmon;
+    background-color: white;
     width: 100%;
     height: 60px;
     vertical-align: middle;
   }
 
   p.header{
+    height: 60px;
     margin: 0;
     margin-left: 10px;
-
     font-size: 24px;
-    line-height: 60px;
-    background-color: sandybrown;
+    display: table-cell;
+    vertical-align: middle;
   }
+  img.header{
+    margin: 0;
+    margin-right: 15px;
+    margin-left: 20px;
+    vertical-align: middle;
+    font-size: 0;
+    height: 40px;
+  }
+
+
 
   .right_box{
     background-color: rgb(120, 120, 202);
     display: inline-block;
     width: 320px;
-    height: 400px;
+    min-height: 400px;
     vertical-align: top;
     font-size: 16px;
     margin:0 auto
@@ -83,7 +91,7 @@ p.heart_num{
     background-color: cadetblue;
     display: inline-block;
     width: 320px;
-    height: 400px;
+    min-height: 400px;
     vertical-align: top;
     font-size: 16px;
     margin:0 auto
@@ -93,6 +101,7 @@ p.heart_num{
     font-size: 0;
     display: flex;
     justify-content:center;
+    background-color: #F4F5F7;
   }
   a {
     font-size: 16px;
@@ -101,6 +110,8 @@ p.heart_num{
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+    font-size: 16px;
+    position: static;
   }
   
   .clearfix {
@@ -143,7 +154,9 @@ p.heart_num{
     }
   }
 
-
+#g-nav{
+  margin-top: 60px;
+}
 
   /*========= ナビゲーションのためのCSS ===============*/
 
@@ -194,15 +207,15 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
 }
 
 /*ナビゲーション*/
-#g-nav ul {
-opacity: 0;/*はじめは透過0*/
+/*#g-nav ul {
+opacity: 0; はじめは透過0*/
   /*ナビゲーション天地中央揃え※レイアウトによって調整してください。不必要なら削除*/
-  position: absolute;
+  /*position: absolute;
   z-index: 999;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
-}
+}*/
 
 /*背景が出現後にナビゲーションを表示*/
 #g-nav.panelactive ul {
@@ -303,15 +316,24 @@ opacity: 0;
   .main{
     width: 320px;
   }
+  .moveright{
+    display: none;
+  }
 }
 @media (min-width: 680px) and (max-width: 999.9px) {
   .main{
     width: 640px;
   }
+  .moveright{
+    display: none;
+  }
 }
 @media (min-width: 1000px) and (max-width: 1319.9px) {
   .main{
     width: 960px;
+  }
+  .moveleft{
+    display: none;
   }
 }
 @media (min-width: 1320px) and (max-width: 1639.9px) {
@@ -320,6 +342,9 @@ opacity: 0;
   }
   .middle_box{
     width: 640px;
+  }
+  .moveleft{
+    display: none;
   }
 }
 @media (min-width: 1640px) {
@@ -330,10 +355,25 @@ opacity: 0;
   .middle_box{
     width: 960px;
   }
+  .moveleft{
+    display: none;
+  }
 }
 
 @media (max-width: 1319.9px) {
   .middle_box{
     width: 320px;
   }
+}
+.modal{
+  margin-top: 60px;
+}
+div#firebaseui-container a{
+  font-size: 12px;
+  padding: 0;
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: normal;
+  color: #007bff;
 }
