@@ -34,8 +34,10 @@ p.heart_num{
     width: 320px;
     display: inline-block;
     font-size: 16px;
+    font-family: "Helvetica Neue", 
+               "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
     
-  }
   .middle_box{
 
     background-color: #ffe0b8;
