@@ -51,6 +51,7 @@
   width: 80px;
   height: 70px;
   z-index: 20;
+  transform: scale(0.7); /*新規作成ボタン大きさ変更*/
   }
   .bottom_right span{
     position:absolute;
@@ -68,7 +69,7 @@
   }
 
 
-  .block-baloon-top, .block-baloon-right, .block-baloon-bottom, .block-baloon-left	{
+  .block-baloon-right {
 	display: table;
   width: 80px;
   height: 70px;
@@ -76,7 +77,7 @@
 	background-color: #f2f2f2;/* 背景色 */
 	border: 2px solid #666;/* 枠線太さ、色 */
 }
-.block-baloon-top:before, .block-baloon-top:after, .block-baloon-right:before, .block-baloon-right:after, .block-baloon-bottom:before, .block-baloon-bottom:after, .block-baloon-left:before, .block-baloon-left:after	{
+.block-baloon-right:before, .block-baloon-right:after	{
 	content: '';
 	position: absolute;
 }
@@ -146,39 +147,6 @@
         </p>
       </div>
       <div id="user-signed-out" class="hidden">
-        <!--
-        <fieldset style="display: none;">
-          <legend>Configuration</legend>
-          reCAPTCHA mode for Phone Auth:
-          <label for="recaptcha-normal">
-            <input type="radio" id="recaptcha-normal" name="recaptcha" value="normal">
-            Normal
-          </label>
-          <label for="recaptcha-invisible">
-            <input type="radio" id="recaptcha-invisible" name="recaptcha" value="invisible">
-            Invisible
-          </label><br>
-          Email signInMethod:
-          <label for="email-signInMethod-password">
-            <input type="radio" id="email-signInMethod-password" name="emailSignInMethod"
-                   value="password">
-            Password
-          </label>
-          <label for="email-signInMethod-emailLink">
-            <input type="radio" id="email-signInMethod-emailLink" name="emailSignInMethod"
-                   value="emailLink">
-            Email Link
-          </label><br>
-          <label for="disableEmailSignUpStatus">Disable email sign up:</label>
-          <input type="checkbox" id="email-disableSignUp-status" name="disableEmailSignUpStatus">
-          <label for="adminRestrictedOperationStatus">Admin restricted operation status:</label>
-          <input type="checkbox" id="admin-restricted-operation-status" name="adminRestrictedOperationStatus">
-        </fieldset>
-        <p>
-          <button id="sign-in-with-redirect">Sign In with Redirect</button>
-          <button id="sign-in-with-popup">Sign In with Popup</button>
-        </p>
-      -->
         <div id="firebaseui-spa">
           <div id="firebaseui-container"></div>
         </div>
@@ -195,14 +163,26 @@
 <!--  ここから -->
 <div class="main">
     <div class="left_box">
-      <div class="right_box moveleft"><p>左側に移動</p></div>
+      <div class="right_box moveleft">
+        <p>左側に移動</p>
+        <input type="text" id="search_box1">
+        <input type="button" onclick="submit_search(1)" value="検索">
+        <div class="search_tag">
+          <a href="./index.html?id=Python">Python</a>
+          <a href="./index.html?id=Java">Java</a>
+          <a href="./index.html?id=HTML">HTML</a>
+          <a href="./index.html?id=C">C</a>
+          <a href="./index.html?id=CSS">CSS</a>
+        </div>
+      </div>
       <div class="heart_box">
         <div class="heart_on"></div><div class="heart_off"></div><p class="heart_num" style="display: none;">num</p>
       </div>
     </div>
 
     <div class="middle_box">
-        <div class="item_box" style="height: 200px;">
+        <div class="item_box" style="min-height: 200px;">
+          <div id="question_list"></div>
         </div>
         <div class="item_box">
             <form style="display: none;" name="likeform" action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec" method="POST" target="sendPhoto">
@@ -212,7 +192,7 @@
               <input name="form_Qid" class="form-Qid" value="none">
               <input name="form_Aid" class="form-Aid">
             </form>
-            <div id="detail_article"></div>
+            <div id="answer_list"></div>
             <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -313,19 +293,31 @@
               </div>
           </div>
       </div>
-        <div class="item_box" style="height: 200px;"></div>
+        <div class="item_box" style="min-height: 200px;"></div>
     </div>
     <div class="right_box moveright">
-        
+      <input type="text" id="search_box2">
+      <input type="button" onclick="submit_search(2)" value="検索">
+      <div class="search_tag">
+        <a href="./index.html?id=Python">Python</a>
+        <a href="./index.html?id=Java">Java</a>
+        <a href="./index.html?id=HTML">HTML</a>
+        <a href="./index.html?id=C">C</a>
+        <a href="./index.html?id=CSS">CSS</a>
+      </div>
     </div>
 </div>
 
     <script>
-
+        function submit_search(search_num){
+          const textbox = document.getElementById("search_box"+search_num);
+          const inputValue = textbox.value;
+          window.location.href = "./index.html?id="+inputValue ;
+        }
 
 
         var str=location.href;
-        var url = Number(location.search.substring(4));//idが整数の場合
+        var url = decodeURI(location.search.substring(4));//idが整数の場合
         let result = str.split("/").filter(e => Boolean(e));
         let last_url=result[result.length - 1];
         console.log(url);
@@ -346,8 +338,8 @@
         });
         
         window.onload = function(){
-          //60000ミリ秒（60秒）毎に関数を呼び出す
-          setInterval("load_sheet()", 60000);
+          //600000ミリ秒（600秒）毎に関数を呼び出す
+          setInterval("load_sheet()", 600000);
         }
         function FormGetAid(Aid_num){
           var form_Aid = document.getElementsByClassName('form-Aid');
@@ -359,30 +351,6 @@
           //console.log(Aid_num);
         }
 
-        function Onheart(num){
-          FormGetAid(num);
-          var form_Like = document.getElementsByClassName('form-like');
-          for (var i = 0; i < form_Like.length; i++){
-            form_Like[i].value= 0;
-          }
-          document.likeform.submit();
-          var target_on = document.getElementsByClassName('heart_on '+num+'');
-          var target_off = document.getElementsByClassName('heart_off '+num+'');
-          target_on[0].style.display = "none";
-          target_off[0].style.display = "block";
-        }
-        function Offheart(num){
-          FormGetAid(num);
-          var form_Like = document.getElementsByClassName('form-like');
-          for (var i = 0; i < form_Like.length; i++){
-            form_Like[i].value= 1;
-          }
-          document.likeform.submit();
-          var target_on = document.getElementsByClassName('heart_on '+num+'');
-          var target_off = document.getElementsByClassName('heart_off '+num+'');
-          target_on[0].style.display = "block";
-          target_off[0].style.display = "none";
-        }
 
         //GASのAPIのURL（各自変更してください。）
         function getpretext(num){
@@ -423,43 +391,44 @@
                     //console.log(QList);
 
                     let htmltext = "";
+                    let htmltextA = "";
                     //console.log(typeof(url));
-                    var resultQ = QList.filter(value => value.qid === url);
-                    //console.log(resultQ);
-                    var resultA = AList.filter(value => value.qid === url);
-                    //console.log(resultA);
-                    var resultLIKE = LIKEList.filter(value => {if(value.uid === GlobalUid && value.qid === url && value.like_num === 1){
+                    regexp = new RegExp(url, 'g');
+                    console.log(regexp);
+                    var resultQ = QList.filter(value => {if(value.text.match(regexp) || value.title.match(regexp)){
                       return true;
                     }});
-                    console.log(resultLIKE);
-                    var LIKE_aid = resultLIKE.map(value => value["aid"]);
-                    console.log(LIKE_aid);
-                    htmltext += '<p>質問</p>';
-                    htmltext += '<p>' + resultQ[0].title + '</p>';
-                    htmltext += '<p>' + resultQ[0].text + '</p>';
-                    htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
-                    for (let i = 0; i < resultA.length; i++){
-                      if(LIKE_aid.includes(resultA[i].aid)==true){
-                        htmltext += '<p>'+resultA[i].uid+'</p>';
-                        htmltext += '<p>'+resultA[i].text+'</p>';
-                        if(GlobalUid==resultA[i].uid){
-                          htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
-                        }
-                        htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testpointModal">point</a>';
-                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
-                        
-                      }
-                      else{
-                        htmltext += '<p>'+resultA[i].uid+'</p>';
-                        htmltext += '<p>'+resultA[i].text+'</p>';
-                        if(GlobalUid==resultA[i].uid){
-                          htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
-                        }
-                        htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testpointModal">point</a>';
-                        htmltext += '<div class="heart_box"><div style="display: none;" class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
+                    var resultA = AList.filter(value => value.text.match(regexp));
+
+                    if(resultQ.length==0){
+                      htmltext+='<p>「'+url+'」の検索結果がありません</p>';
+                    }
+                    else{
+                      htmltext += '<p>新規質問一覧</p>';
+
+                      for (let i = 0; i < resultQ.length; i++){
+                          htmltext += '<a href="./detail.html?id='+resultQ[i].qid+'">'+resultQ[i].title+'</a>';
+                          htmltext += '<p>'+resultQ[i].text+'</p>';
+                          htmltext += '<div class="heart_box"><div class="heart_on '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div>';
+                          
                       }
                     }
-                    document.getElementById("detail_article").innerHTML = htmltext;
+
+                    if(resultA.length==0){
+                      htmltextA+='<p>「'+url+'」の検索結果がありません</p>';
+                    }
+                    else{
+                      htmltextA += '<p>回答一覧</p>';
+
+                      for (let i = 0; i < resultA.length; i++){
+                          htmltextA += '<a href="./detail.html?id='+resultA[i].qid+'">'+resultA[i].qid+'</a>';
+                          htmltextA += '<p>'+resultA[i].text+'</p>';
+                          htmltextA += '<div class="heart_box"><div class="heart_on '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div>';
+                          
+                      }
+                    }
+                    document.getElementById("question_list").innerHTML = htmltext;
+                    document.getElementById("answer_list").innerHTML = htmltextA;
                     //console.log(htmltext);
                     //quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
                     //document.getElementById("editor").innerHTML = resultA[2].text;
