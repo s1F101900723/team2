@@ -138,12 +138,7 @@ var GlobalUid;
    * @param {!firebase.User} user
    */
   var handleSignedInUser = function(user) {
-    var str=location.href;
-    var url = location.search.substring(4);
-    let result = str.split("/").filter(e => Boolean(e));
-    let last_url=result[result.length - 1];
-    console.log(url);
-    console.log(last_url);
+
     document.getElementById('user-signed-in').style.display = 'block';
     document.getElementById('user-signed-out').style.display = 'none';
     document.getElementById('name').textContent = user.displayName;
