@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -77,16 +78,12 @@
 	position: relative;
 	background-color: #f2f2f2;/* 背景色 */
 	border: 2px solid #666;/* 枠線太さ、色 */
+  border-radius: 50px;
 }
-.block-baloon-right:before, .block-baloon-right:after	{
-	content: '';
-	position: absolute;
-}
-  .block-baloon-right	{
-    border-radius: 50px;
 
-}
 .block-baloon-right:before, .block-baloon-right:after	{
+  content: '';
+	position: absolute;
   right: -2px;/* 枠線太さ */
   bottom: -2px;
   border-right: 40px solid transparent;
@@ -101,6 +98,10 @@
   z-index: 1;
 
 }
+i {
+  font-size: 24px;
+  color: aquamarine;
+}
 </style>
 
 
@@ -110,6 +111,8 @@
 <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
 <ul>
 <li><a href="#">Top</a></li> 
+<i class="fas fa-pen"></i>
+<i class="fas fa-check"></i>
 <div id="container" >
   <div id="loading">Loading...</div>
   <div id="loaded" class="hidden">
@@ -128,7 +131,7 @@
                 <label>ユーザー名<input name="form_name" id="form-name" value="none"></label>
             </div>
             <div class="form-group">
-                <input type="submit" value="送信する" class="btn btn-primary">
+                <input type="submit" value="送信する" class="btn btn-primary fas fa-check">
             </div>
         </form>
         <div id="user-info">
@@ -353,24 +356,27 @@
                     var AList = data[1];
                     var QList = data[2];
                     var LIKEList = data[3];
-
+                    let likehtmltext = "";
+                    let pointhtmltext = "";
                     var resultPointRank = UserList.filter(value => value.point !== '');
                     var resultLikeQRank = QList.filter(value => value.like_sum !== '');
 
                     quickSort(resultPointRank);
                     quickSort(resultLikeQRank);
-                    const rankingTarget = document.getElementById("point_ranking");
-                    rankingTarget.innerHTML +='<p>#PointRanking</p>';
+
+                    pointhtmltext +='<p>#PointRanking</p>';
                     resultPointRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      rankingTarget.innerHTML += "<li>" + (i + 1) + "位" + "user : " + e.name + " point : " + e.point + "</li>";
+                      pointhtmltext += "<li>" + (i + 1) + "位" + "user : " + e.name + " point : " + e.point + "</li>";
                     });
-                    const rankingTargetQ = document.getElementById("like_Q_ranking");
-                    rankingTargetQ.innerHTML +='<p>#LikeRanking</p>';
+                    document.getElementById("point_ranking").innerHTML = pointhtmltext;
+
+                    likehtmltext +='<p>#LikeRanking</p>';
                     resultLikeQRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      rankingTargetQ.innerHTML += "<li>" + (i + 1) + "位" + "title : " + e.title + " like : " + e.like_sum + "</li>";
+                      likehtmltext += "<li>" + (i + 1) + "位" + "title : " + e.title + " like : " + e.like_sum + "</li>";
                     });
+                    document.getElementById("like_Q_ranking").innerHTML = likehtmltext;
 
                     let htmltext = "";
                     let htmltextA = "";
