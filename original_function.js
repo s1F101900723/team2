@@ -45,6 +45,43 @@ function FormGetAid(Aid_num){
     //quill.clipboard.dangerouslyPasteHTML(pretext);
     //console.log(Aid_num);
 }
+function Onheart(num){
+    FormGetAid(num);
+    var form_Like = document.getElementsByClassName('form-like');
+    for (var i = 0; i < form_Like.length; i++){
+      form_Like[i].value= 0;
+    }
+    document.likeform.submit();
+    var target_on = document.getElementsByClassName('heart_on '+num+'');
+    var target_off = document.getElementsByClassName('heart_off '+num+'');
+    target_on[0].style.display = "none";
+    target_off[0].style.display = "block";
+  }
+function Offheart(num){
+    FormGetAid(num);
+    var form_Like = document.getElementsByClassName('form-like');
+    for (var i = 0; i < form_Like.length; i++){
+      form_Like[i].value= 1;
+    }
+    document.likeform.submit();
+    var target_on = document.getElementsByClassName('heart_on '+num+'');
+    var target_off = document.getElementsByClassName('heart_off '+num+'');
+    target_on[0].style.display = "block";
+    target_off[0].style.display = "none";
+  }
+
+function edit(){
+    var target_on = document.getElementsByClassName('name_edit_on');
+    var target_off = document.getElementsByClassName('name_edit_off');
+    target_on[0].style.display = "none";
+    target_off[0].style.display = "block";
+  }
+function check(){
+    var target_on = document.getElementsByClassName('name_edit_on');
+    var target_off = document.getElementsByClassName('name_edit_off');
+    target_on[0].style.display = "block";
+    target_off[0].style.display = "none";
+  }
 
 function getpretext(num){
     var endpoint ="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";
