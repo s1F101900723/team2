@@ -76,14 +76,14 @@ function edit(){
     var target_name = document.getElementById("form-name");
     target_name.readOnly = false;
     target_on[0].style.display = "none";
-    target_off[0].style.display = "block";
+    target_off[0].style.display = "inline-block";
   }
 function check(){
     var target_on = document.getElementsByClassName('name_edit_on');
     var target_off = document.getElementsByClassName('name_edit_off');
     var target_name = document.getElementById("form-name");
     target_name.readOnly = true;
-    target_on[0].style.display = "block";
+    target_on[0].style.display = "inline-block";
     target_off[0].style.display = "none";
   }
 
