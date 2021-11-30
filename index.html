@@ -356,6 +356,8 @@ i {
                     var LIKEList = data[3];
                     let likehtmltext = "";
                     let pointhtmltext = "";
+                    var USER_info = UserList.find(value => value.uid === GlobalUid);
+                    document.getElementById("form-name").value = USER_info.name;
                     var resultPointRank = UserList.filter(value => value.point !== '');
                     var resultLikeQRank = QList.filter(value => value.like_sum !== '');
 
