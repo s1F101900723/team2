@@ -88,7 +88,7 @@ function check(){
   }
 
 function getpretext(num){
-    var endpoint ="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";
+    var endpoint ="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";
     fetch(endpoint)
         .then(response => response.json())
         /*成功した処理*/
