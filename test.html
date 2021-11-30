@@ -8,8 +8,12 @@
   <body>
     <div id="root"></div>
     <div>
-      <h2>ranking</h2>
+      <h2>Thankyou_ranking</h2>
       <ul id="ranking"></ul>
+    </div>
+    <div>
+      <h2>like_ranking</h2>
+      <ul id="like_sum"></ul>
     </div>
     <script>
       //クイックソート関数
@@ -78,13 +82,21 @@
           });
 
           var resultPointRank = result.data.profile.filter(value => value.point !== '');
+          var resultlike_sum = result.data.Q.filter(value => value.like_sum !== '');
 
           quickSort(resultPointRank);
+          quickSort(resultlike_sum);
+
           const rankingTarget = document.getElementById("ranking");
-          console.log(resultPointRank);
+          const like_sumTarget = document.getElementById("like_sum");
+
           resultPointRank.reverse().map((e, i) => {
             if ((i+1) > 3) return 
             rankingTarget.innerHTML += "<li>" + (i + 1) + "位"　+ "user : " + e.name + " point : " + e.point + "</li>";
+          });
+          resultlike_sum.reverse().map((e, i) => {
+            if ((i+1) > 3) return 
+            like_sumTarget.innerHTML += "<li>" + (i + 1) + "位"　+ "title : " + e.title + " like_sum : " + e.like_sum + "</li>";
           });
         });
     </script>
