@@ -36,7 +36,6 @@ p.heart_num{
     font-size: 16px;
     font-family: "Helvetica Neue", 
                "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-    
 }
     
   .middle_box{
@@ -45,10 +44,8 @@ p.heart_num{
     display: inline-block;
     vertical-align: top;
     font-size: 0;
-    margin-left: 50px;
+    margin:0 auto;
   }
-
-
   .main{
     margin-top: 60px;
 
@@ -90,12 +87,8 @@ p.heart_num{
     min-height: 400px;
     vertical-align: top;
     font-size: 16px;
-    margin-top: 50px;
-    margin-left: 1400px;
-    margin-bottom: 3000px;
-    
+    margin:0 auto
   }
-
   .left_box{
     background-color: cadetblue;
     display: inline-block;
@@ -103,7 +96,7 @@ p.heart_num{
     min-height: 400px;
     vertical-align: top;
     font-size: 16px;
-    margin-top: 50px;
+    margin:0 auto
     
   }
   body {
