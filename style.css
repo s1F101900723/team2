@@ -46,7 +46,6 @@ p.heart_num{
     vertical-align: top;
     font-size: 0;
     margin:0 auto;
-    margin-left: 10px;
   }
 
 
@@ -91,8 +90,10 @@ p.heart_num{
     min-height: 400px;
     vertical-align: top;
     font-size: 16px;
-    margin:0 auto
+    margin-left: 30px;
+    
   }
+
   .left_box{
     background-color: cadetblue;
     display: inline-block;
