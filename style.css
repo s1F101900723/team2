@@ -46,6 +46,12 @@ p.heart_num{
     font-size: 0;
     margin:0 auto;
   }
+  
+  .middle_box > .item_box{
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
   .main{
     margin-top: 60px;
 
