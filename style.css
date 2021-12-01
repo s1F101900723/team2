@@ -36,6 +36,8 @@ p.heart_num{
     font-size: 16px;
     font-family: "Helvetica Neue", 
                "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;
 }
     
   .middle_box{
