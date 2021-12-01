@@ -114,15 +114,13 @@ i {
 <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
 <ul>
 <li><a href="#">Top</a></li> 
-<i class="fas fa-pen"></i>
-<i class="fas fa-check"></i>
 <div id="container" >
   <div id="loading">Loading...</div>
   <div id="loaded" class="hidden">
     <div id="main">
       <div id="user-signed-in" class="hidden">
         <form
-            action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec"
+            action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec"
             method="POST" target="sendPhoto">
             <div class="name_form_hidden">
               <label>フォームの種類<input name="form" value="profile"></label>
@@ -186,7 +184,7 @@ i {
           <div id="question_list"></div>
         </div>
         <div class="item_box">
-            <form style="display: none;" name="likeform" action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec" method="POST" target="sendPhoto">
+            <form style="display: none;" name="likeform" action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec" method="POST" target="sendPhoto">
               <input name="form" value="like">
               <input name="form_like" class="form-like">
               <input name="form_uid" class="form-uid uid" value="none">
@@ -201,7 +199,7 @@ i {
                             <h4><div class="modal-title" id="myModalLabel">回答投稿画面</div></h4>
                         </div>
                         <form
-                            action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec"
+                            action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec"
                             method="POST" target="sendPhoto" id="form" name="AnswerForm">
                             <div class="form-group modal-body">
                                 <label>フォームの種類<input name="form" value="answer"></label>
@@ -236,7 +234,7 @@ i {
                             <h4><div class="modal-title">ポイント付与画面</div></h4>
                         </div>
                         <form
-                            action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec"
+                            action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec"
                             method="POST" target="sendPhoto" id="pointform" name="AnswerForm">
                             <div class="form-group modal-body">
                                 <label>フォームの種類<input name="form" value="point"></label>
@@ -249,6 +247,17 @@ i {
                             </div>
                             <div class="form-group modal-body">
                                 <label>Aid<input name="form_Aid" class="form-Aid"></label>
+                            </div>
+                            <div class="form-group modal-body">
+                                <label>point
+                                <select name="form_point">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select>
+                                </label>
                             </div>
 
                             <div class="form-group modal-footer">
@@ -267,7 +276,7 @@ i {
                       <h4><div class="modal-title">回答投稿画面</div></h4>
                   </div>
                   <form
-                      action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec"
+                      action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec"
                       method="POST" target="sendPhoto" id="Qform" name="AnswerForm">
                       <div class="form-group modal-body">
                           <label>フォームの種類<input name="form" value="question"></label>
@@ -340,7 +349,7 @@ i {
         //GASのAPIのURL（各自変更してください。）
         function load_sheet(){
             var endpoint =
-            "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";//WebAPIのURL
+            "https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";//WebAPIのURL
     
             //APIを使って非同期データを取得する
 
