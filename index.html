@@ -324,8 +324,8 @@ i {
         var url = decodeURI(location.search.substring(4));//idが整数の場合
         let result = str.split("/").filter(e => Boolean(e));
         let last_url=result[result.length - 1];
-        console.log(url);
-        console.log(last_url);
+        //console.log(url);
+        //console.log(last_url);
         //document.getElementById('form-Qid').value = url;
         var form_Qid = document.getElementsByClassName('form-Qid');
         for (var i = 0; i < form_Qid.length; i++){
@@ -391,7 +391,7 @@ i {
                     let htmltextA = "";
                     //console.log(typeof(url));
                     regexp = new RegExp(url, 'g');
-                    console.log(regexp);
+                    //console.log(regexp);
                     var resultQ = QList.filter(value => {if(value.text.match(regexp) || value.title.match(regexp)){
                       return true;
                     }});
@@ -446,6 +446,11 @@ i {
               form_Qid[i].textContent= url;
               form_Qid[i].value= url;
             }
+            var elems = document.getElementsByClassName('uid');
+            for (var i = 0; i < elems.length; i++){
+              elems[i].textContent= GlobalUid;
+              elems[i].value= GlobalUid;
+            }
             $('#testModal').modal('hide');
             return false
         })
@@ -456,6 +461,11 @@ i {
             for (var i = 0; i < form_Qid.length; i++){
               form_Qid[i].textContent= url;
               form_Qid[i].value= url;
+            }
+            var elems = document.getElementsByClassName('uid');
+            for (var i = 0; i < elems.length; i++){
+              elems[i].textContent= GlobalUid;
+              elems[i].value= GlobalUid;
             }
             $('#testpointModal').modal('hide');
             return false
@@ -468,6 +478,11 @@ i {
             for (var i = 0; i < form_Qid.length; i++){
               form_Qid[i].textContent= url;
               form_Qid[i].value= url;
+            }
+            var elems = document.getElementsByClassName('uid');
+            for (var i = 0; i < elems.length; i++){
+              elems[i].textContent= GlobalUid;
+              elems[i].value= GlobalUid;
             }
             $('#testQModal').modal('hide');
             return false
@@ -511,7 +526,7 @@ i {
         toolbar: toolbarOptions
       },
     });
-    console.log(quill);
+    //console.log(quill);
     
     </script>
     <!--script src="app.js"></script-->
