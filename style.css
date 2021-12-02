@@ -81,7 +81,7 @@ p.heart_num{
 
 
   .right_box{
-    background-color: rgb(120, 120, 202);
+    background-color: #ffffff;
     display: inline-block;
     width: 320px;
     min-height: 400px;
@@ -90,7 +90,7 @@ p.heart_num{
     margin-top: 50px;
   }
   .left_box{
-    background-color: cadetblue;
+    background-color: #ffffff;
     display: inline-block;
     width: 320px;
     min-height: 400px;
