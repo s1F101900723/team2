@@ -138,17 +138,14 @@ var GlobalUid;
    * @param {!firebase.User} user
    */
   var handleSignedInUser = function(user) {
-    var str=location.href;
-    var url = location.search.substring(4);
-    let result = str.split("/").filter(e => Boolean(e));
-    let last_url=result[result.length - 1];
-    console.log(url);
-    console.log(last_url);
+
     document.getElementById('user-signed-in').style.display = 'block';
     document.getElementById('user-signed-out').style.display = 'none';
     document.getElementById('name').textContent = user.displayName;
     //document.getElementById('form-uid').value = user.uid;
     GlobalUid = user.uid;//グローバル変数でuidを設定
+    //console.log(GlobalUid);
+    load_sheet();
     var elems = document.getElementsByClassName('uid');
     for (var i = 0; i < elems.length; i++){
       elems[i].textContent= user.uid;

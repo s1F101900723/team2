@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -31,12 +32,82 @@
     <script src="https://www.gstatic.com/firebasejs/ui/5.0.0/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/5.0.0/firebase-ui-auth.css" />
     <script src="app.js"></script>
+    <script src="original_function.js"></script>
 </head>
 
 <body>
 <header id="header">
     <p class="header"><img class="header" src="./logo_menu.png">Questa</p>
 </header>
+<div class="bottom_right" data-toggle="modal" data-target="#testQModal">
+  <span></span>
+  <span></span>
+  <a class="block-baloon-right"></a>
+</div>
+<style>
+/*あとでcssに追加する*/
+.bottom_right{
+  position:fixed;
+  right:30px;
+  bottom:30px;
+  width: 80px;
+  height: 70px;
+  z-index: 20;
+  transform: scale(0.7); /*新規作成ボタン大きさ変更*/
+  }
+  .bottom_right span{
+    position:absolute;
+    z-index: 2;
+    display: inline-block;
+    left: 25%;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #666;
+    width: 50%;
+    top: 50%;
+  }
+  .bottom_right span:nth-of-type(1) {
+  transform: rotate(90deg);
+  }
+
+
+  .block-baloon-right {
+	display: table;
+  width: 80px;
+  height: 70px;
+	position: relative;
+	background-color: #f2f2f2;/* 背景色 */
+	border: 2px solid #666;/* 枠線太さ、色 */
+  border-radius: 50px;
+}
+
+.block-baloon-right:before, .block-baloon-right:after	{
+  content: '';
+	position: absolute;
+  right: -2px;/* 枠線太さ */
+  bottom: -2px;
+  border-right: 40px solid transparent;
+  border-bottom: 40px solid #666;
+  z-index: -1;
+}
+.block-baloon-right:after	{
+	right: 3px;/* 枠線太さ */
+  bottom: 0;
+  border-right: 30px solid transparent;
+  border-bottom: 30px solid #f2f2f2;
+  z-index: 1;
+
+}
+i {
+  font-size: 24px;
+  color: aquamarine;
+}
+.name_form_hidden {
+  display: none;
+}
+</style>
+
+
 
 <div class="openbtn"><span></span><span></span><span></span></div>
 <nav id="g-nav">
@@ -49,20 +120,15 @@
     <div id="main">
       <div id="user-signed-in" class="hidden">
         <form
-            action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec"
-            method="POST">
-            <div class="form-group ">
-                <label>フォームの種類<input name="form" value="profile"></label>
+            action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec"
+            method="POST" target="sendPhoto">
+            <div class="name_form_hidden">
+              <label>フォームの種類<input name="form" value="profile"></label>
+              <label>uid<input name="form_uid" value="none" class="uid"></label>
             </div>
-            <div class="form-group ">
-                <label>uid<input name="form_uid" id="form-uid" value="none" class="uid"></label>
-            </div>
-            <div class="form-group ">
-                <label>ユーザー名<input name="form_name" id="form-name" value="none"></label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="送信する" class="btn btn-primary">
-            </div>
+              <label>ユーザー名<input name="form_name" id="form-name" value="none" readonly></label>
+              <input type="submit" onclick="check()" value="&#xf00c;" style="display: none;" class="fas fa-check name_edit_off">
+              <input type="button" onclick="edit()" value="&#xf304;" class="fas fa-pen name_edit_on">
         </form>
         <div id="user-info">
           <div id="photo-container">
@@ -81,39 +147,6 @@
         </p>
       </div>
       <div id="user-signed-out" class="hidden">
-        <!--
-        <fieldset style="display: none;">
-          <legend>Configuration</legend>
-          reCAPTCHA mode for Phone Auth:
-          <label for="recaptcha-normal">
-            <input type="radio" id="recaptcha-normal" name="recaptcha" value="normal">
-            Normal
-          </label>
-          <label for="recaptcha-invisible">
-            <input type="radio" id="recaptcha-invisible" name="recaptcha" value="invisible">
-            Invisible
-          </label><br>
-          Email signInMethod:
-          <label for="email-signInMethod-password">
-            <input type="radio" id="email-signInMethod-password" name="emailSignInMethod"
-                   value="password">
-            Password
-          </label>
-          <label for="email-signInMethod-emailLink">
-            <input type="radio" id="email-signInMethod-emailLink" name="emailSignInMethod"
-                   value="emailLink">
-            Email Link
-          </label><br>
-          <label for="disableEmailSignUpStatus">Disable email sign up:</label>
-          <input type="checkbox" id="email-disableSignUp-status" name="disableEmailSignUpStatus">
-          <label for="adminRestrictedOperationStatus">Admin restricted operation status:</label>
-          <input type="checkbox" id="admin-restricted-operation-status" name="adminRestrictedOperationStatus">
-        </fieldset>
-        <p>
-          <button id="sign-in-with-redirect">Sign In with Redirect</button>
-          <button id="sign-in-with-popup">Sign In with Popup</button>
-        </p>
-      -->
         <div id="firebaseui-spa">
           <div id="firebaseui-container"></div>
         </div>
@@ -130,17 +163,27 @@
 <!--  ここから -->
 <div class="main">
     <div class="left_box">
-      <div class="right_box moveleft"><p>左側に移動</p></div>
-      <div class="heart_box">
-        <div class="heart_on"></div><div class="heart_off"></div><p class="heart_num" style="display: none;">num</p>
+      <div class="right_box moveleft">
+        <p>左側に移動</p>
+        <input type="text" id="search_box1" placeholder="キーワード検索">
+        <input type="button" onclick="submit_search(1)" value="検索">
+        <div class="search_tag">
+          <a href="./index.html?id=Python">Python</a>
+          <a href="./index.html?id=Java">Java</a>
+          <a href="./index.html?id=HTML">HTML</a>
+          <a href="./index.html?id=C">C</a>
+          <a href="./index.html?id=CSS">CSS</a>
+        </div>
       </div>
+      <div id="point_ranking"></div>
+      <div id="like_Q_ranking"></div>
     </div>
 
     <div class="middle_box">
-        <div class="item_box" style="height: 200px;">
+        <div class="item_box" style="min-height: 200px;">
         </div>
         <div class="item_box">
-            <form style="display: none;" name="likeform" action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec" method="POST" target="sendPhoto">
+            <form style="display: none;" name="likeform" action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec" method="POST" target="sendPhoto">
               <input name="form" value="like">
               <input name="form_like" class="form-like">
               <input name="form_uid" class="form-uid uid" value="none">
@@ -155,13 +198,13 @@
                             <h4><div class="modal-title" id="myModalLabel">回答投稿画面</div></h4>
                         </div>
                         <form
-                            action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec"
+                            action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec"
                             method="POST" target="sendPhoto" id="form" name="AnswerForm">
                             <div class="form-group modal-body">
                                 <label>フォームの種類<input name="form" value="answer"></label>
                             </div>
                             <div class="form-group modal-body">
-                                <label>uid<input name="form_uid" id="form-uid" value="none" class="uid"></label>
+                                <label>uid<input name="form_uid" value="none" class="uid"></label>
                             </div>
                             <div class="form-group modal-body">
                                 <label>Qid<input name="form_Qid" class="form-Qid" value="none"></label>
@@ -190,7 +233,7 @@
                             <h4><div class="modal-title">ポイント付与画面</div></h4>
                         </div>
                         <form
-                            action="https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec"
+                            action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec"
                             method="POST" target="sendPhoto" id="pointform" name="AnswerForm">
                             <div class="form-group modal-body">
                                 <label>フォームの種類<input name="form" value="point"></label>
@@ -204,6 +247,17 @@
                             <div class="form-group modal-body">
                                 <label>Aid<input name="form_Aid" class="form-Aid"></label>
                             </div>
+                            <div class="form-group modal-body">
+                                <label>point
+                                <select name="form_point">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select>
+                                </label>
+                            </div>
 
                             <div class="form-group modal-footer">
                                 <input type="submit" value="送信する" class="btn btn-primary btn-sendpoint" data-dismiss="modal" id="btn-sendpoint">
@@ -214,23 +268,62 @@
                 </div>
             </div>
         </div>
-        <div class="item_box" style="height: 200px;"></div>
+        <div class="modal fade" id="testQModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" style="font-size: 16px;">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h4><div class="modal-title">回答投稿画面</div></h4>
+                  </div>
+                  <form
+                      action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec"
+                      method="POST" target="sendPhoto" id="Qform" name="AnswerForm">
+                      <div class="form-group modal-body">
+                          <label>フォームの種類<input name="form" value="question"></label>
+                      </div>
+                      <div class="form-group modal-body">
+                          <label>uid<input name="uid" value="none" class="uid"></label>
+                      </div>
+                      <div class="form-group modal-body">
+                          <label>Qid<input name="qid"></label>
+                      </div>
+                      <div class="form-group modal-body">
+                          <label>title<input name="title"></label>
+                      </div>
+                      <div class="form_group modal-body">
+                          <label>内容<textarea name="text" id="formQ_text" value="内容" style="display: none;"></textarea>
+                              <div id="editorQ"></div></label>
+                      </div>
+
+                      <div class="form-group modal-footer">
+                          <input type="submit" value="送信する" class="btn btn-primary btn-sendQ" data-dismiss="modal" id="btn-Qsend">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+        <div class="item_box" style="min-height: 200px;"></div>
     </div>
     <div class="right_box moveright">
-        
+      <input type="text" id="search_box2" placeholder="キーワード検索">
+      <input type="button" onclick="submit_search(2)" value="検索">
+      <div class="search_tag">
+        <a href="./index.html?id=Python">Python</a>
+        <a href="./index.html?id=Java">Java</a>
+        <a href="./index.html?id=HTML">HTML</a>
+        <a href="./index.html?id=C">C</a>
+        <a href="./index.html?id=CSS">CSS</a>
+      </div>
     </div>
 </div>
 
     <script>
-
-
-
         var str=location.href;
         var url = Number(location.search.substring(4));//idが整数の場合
         let result = str.split("/").filter(e => Boolean(e));
         let last_url=result[result.length - 1];
-        console.log(url);
-        console.log(last_url);
+        //console.log(url);
+        //console.log(last_url);
         //document.getElementById('form-Qid').value = url;
         var form_Qid = document.getElementsByClassName('form-Qid');
         for (var i = 0; i < form_Qid.length; i++){
@@ -250,61 +343,11 @@
           //60000ミリ秒（60秒）毎に関数を呼び出す
           setInterval("load_sheet()", 60000);
         }
-        function FormGetAid(Aid_num){
-          var form_Aid = document.getElementsByClassName('form-Aid');
-          for (var i = 0; i < form_Aid.length; i++){
-            form_Aid[i].value= Aid_num;
-          }
-          //document.getElementById('form-Aid').value = Aid_num;
-          //quill.clipboard.dangerouslyPasteHTML(pretext);
-          //console.log(Aid_num);
-        }
-
-        function Onheart(num){
-          FormGetAid(num);
-          var form_Like = document.getElementsByClassName('form-like');
-          for (var i = 0; i < form_Like.length; i++){
-            form_Like[i].value= 0;
-          }
-          document.likeform.submit();
-          var target_on = document.getElementsByClassName('heart_on '+num+'');
-          var target_off = document.getElementsByClassName('heart_off '+num+'');
-          target_on[0].style.display = "none";
-          target_off[0].style.display = "block";
-        }
-        function Offheart(num){
-          FormGetAid(num);
-          var form_Like = document.getElementsByClassName('form-like');
-          for (var i = 0; i < form_Like.length; i++){
-            form_Like[i].value= 1;
-          }
-          document.likeform.submit();
-          var target_on = document.getElementsByClassName('heart_on '+num+'');
-          var target_off = document.getElementsByClassName('heart_off '+num+'');
-          target_on[0].style.display = "block";
-          target_off[0].style.display = "none";
-        }
 
         //GASのAPIのURL（各自変更してください。）
-        function getpretext(num){
-          var endpoint =
-            "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";
-            fetch(endpoint)
-                .then(response => response.json())
-                /*成功した処理*/
-                .then(data => {
-                    //JSONから配列に変換
-                    var AList = data[1];
-                    var pretext_A=AList.filter(value => {if(value.qid === url && value.aid === num && value.uid === GlobalUid){
-                      return true;
-                    }});
-                    quill.clipboard.dangerouslyPasteHTML(pretext_A[0].text);
-                });
-            FormGetAid(num);
-        }
         function load_sheet(){
             var endpoint =
-            "https://script.google.com/macros/s/AKfycbyEXVk8PA9ZgzR2FvV0gnezs11MrX1DOmAoVH2OU6d6u5bxKOO1qKu5Vl2GECnaVAskng/exec";//WebAPIのURL
+            "https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";//WebAPIのURL
     
             //APIを使って非同期データを取得する
 
@@ -318,12 +361,32 @@
                     var AList = data[1];
                     var QList = data[2];
                     var LIKEList = data[3];
-                    //var resultQ = data[2].filter(value => value.name === 'user');
-                    //console.log(UserList);
-                    //console.log(AList);
-                    //console.log(QList);
+                    let likehtmltext = "";
+                    let pointhtmltext = "";
+                    var USER_info = UserList.find(value => value.uid === GlobalUid);
+                    document.getElementById("form-name").value = USER_info.name;
+                    var resultPointRank = UserList.filter(value => value.point !== '');
+                    var resultLikeQRank = QList.filter(value => value.like_sum !== '');
+
+                    quickSort(resultPointRank);
+                    quickSort(resultLikeQRank);
+
+                    pointhtmltext +='<p>#PointRanking</p>';
+                    resultPointRank.reverse().map((e, i) => {
+                      if ((i+1) > 3) return 
+                      pointhtmltext += "<li>" + (i + 1) + "位" + "user : " + e.name + " point : " + e.point + "</li>";
+                    });
+                    document.getElementById("point_ranking").innerHTML = pointhtmltext;
+
+                    likehtmltext +='<p>#LikeRanking</p>';
+                    resultLikeQRank.reverse().map((e, i) => {
+                      if ((i+1) > 3) return 
+                      likehtmltext += "<li>" + (i + 1) + "位" + "title : " + e.title + " like : " + e.like_sum + "</li>";
+                    });
+                    document.getElementById("like_Q_ranking").innerHTML = likehtmltext;
 
                     let htmltext = "";
+
                     //console.log(typeof(url));
                     var resultQ = QList.filter(value => value.qid === url);
                     //console.log(resultQ);
@@ -332,9 +395,9 @@
                     var resultLIKE = LIKEList.filter(value => {if(value.uid === GlobalUid && value.qid === url && value.like_num === 1){
                       return true;
                     }});
-                    console.log(resultLIKE);
+                    //console.log(resultLIKE);
                     var LIKE_aid = resultLIKE.map(value => value["aid"]);
-                    console.log(LIKE_aid);
+                    //console.log(LIKE_aid);
                     htmltext += '<p>質問</p>';
                     htmltext += '<p>' + resultQ[0].title + '</p>';
                     htmltext += '<p>' + resultQ[0].text + '</p>';
@@ -381,6 +444,11 @@
               form_Qid[i].textContent= url;
               form_Qid[i].value= url;
             }
+            var elems = document.getElementsByClassName('uid');
+            for (var i = 0; i < elems.length; i++){
+              elems[i].textContent= GlobalUid;
+              elems[i].value= GlobalUid;
+            }
             $('#testModal').modal('hide');
             return false
         })
@@ -392,7 +460,29 @@
               form_Qid[i].textContent= url;
               form_Qid[i].value= url;
             }
+            var elems = document.getElementsByClassName('uid');
+            for (var i = 0; i < elems.length; i++){
+              elems[i].textContent= GlobalUid;
+              elems[i].value= GlobalUid;
+            }
             $('#testpointModal').modal('hide');
+            return false
+        })
+        const $Qform = $('#Qform')
+        $('.btn-sendQ').on('click', evt => {
+            $("#formQ_text").val(quillQ.root.innerHTML);
+            $Qform.submit();
+            $Qform[0].reset();
+            for (var i = 0; i < form_Qid.length; i++){
+              form_Qid[i].textContent= url;
+              form_Qid[i].value= url;
+            }
+            var elems = document.getElementsByClassName('uid');
+            for (var i = 0; i < elems.length; i++){
+              elems[i].textContent= GlobalUid;
+              elems[i].value= GlobalUid;
+            }
+            $('#testQModal').modal('hide');
             return false
         })
 
@@ -422,13 +512,19 @@
     
       ['clean']
     ];
-    var quill = new Quill('#editor', {
+    var quill = new Quill('#editor',{
       theme: 'snow',
       modules: {
         toolbar: toolbarOptions
       },
     });
-    console.log(quill);
+    var quillQ = new Quill('#editorQ',{
+      theme: 'snow',
+      modules: {
+        toolbar: toolbarOptions
+      },
+    });
+    //console.log(quill);
     
     </script>
     <!--script src="app.js"></script-->
