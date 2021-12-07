@@ -137,24 +137,17 @@ p.heart_num{
     background-color: #EEE;
     border: 1px solid #CCC;
     float: left;
-    height: 80px;
-    margin-right: 10px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
   }
   
   #photo {
-    height: 80px;
+    height: 50px;
     margin: 0;
-    width: 80px;
+    width: 50px;
   }
   
-  @media (max-width: 300px) {
-    #photo-container,
-    #photo {
-      height: 40px;
-      width: 40px;
-    }
-  }
+
 
 #g-nav{
   margin-top: 60px;
@@ -287,7 +280,8 @@ top:15px;
 }
 
 .openbtn span:nth-of-type(2) {
-top:23px;
+left:0px;
+/*top: 23px;*/
 }
 
 .openbtn span:nth-of-type(3) {
