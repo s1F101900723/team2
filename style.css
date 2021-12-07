@@ -82,7 +82,7 @@ p.heart_num{
 
 
   .right_box{
-    background-color: #ffffff;
+
     display: inline-block;
     width: 320px;
     min-height: 400px;
@@ -91,7 +91,7 @@ p.heart_num{
 
   }
   .left_box{
-    background-color: #ffffff;
+
     display: inline-block;
     width: 320px;
     min-height: 400px;
@@ -445,6 +445,7 @@ div.ql-editor{
   padding: 5px 10px 5px 20px;
   border-radius: 50px;
   border: 2px solid coral;
+  background-color: #fff;
 }
 .fa-search{
   color: #ff8c00;
@@ -463,3 +464,82 @@ div.ql-editor{
   box-shadow: inset 0 0 10px 10px #909090;  /* スクロールバーの色*/
   border: solid 4px transparent;            /* スクロールバーの左右の余白*/
 }
+
+.bottom_right{
+  position:fixed;
+  right:30px;
+  bottom:30px;
+  width: 80px;
+  height: 70px;
+  z-index: 20;
+  transform: scale(0.7); /*新規作成ボタン大きさ変更*/
+  }
+  .bottom_right span{
+    position:absolute;
+    z-index: 2;
+    display: inline-block;
+    left: 25%;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #666;
+    width: 50%;
+    top: 50%;
+  }
+  .bottom_right span:nth-of-type(1) {
+  transform: rotate(90deg);
+  }
+
+
+  .block-baloon-right {
+	display: table;
+  width: 80px;
+  height: 70px;
+	position: relative;
+	background-color: #f2f2f2;/* 背景色 */
+	border: 2px solid #666;/* 枠線太さ、色 */
+  border-radius: 50px;
+}
+
+.block-baloon-right:before, .block-baloon-right:after	{
+  content: '';
+	position: absolute;
+  right: -2px;/* 枠線太さ */
+  bottom: -2px;
+  border-right: 40px solid transparent;
+  border-bottom: 40px solid #666;
+  z-index: -1;
+}
+.block-baloon-right:after	{
+	right: 3px;/* 枠線太さ */
+  bottom: 0;
+  border-right: 30px solid transparent;
+  border-bottom: 30px solid #f2f2f2;
+  z-index: 1;
+
+}
+i {
+  font-size: 24px;
+  color: aquamarine;
+}
+.name_form_hidden {
+  display: none;
+}
+.detail_item_box{
+    vertical-align: top;
+    background-color: rgba(0, 217, 255, 0.308);
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    
+  }
+  #point_ranking{
+    background-color: #fff;
+    border: solid 2px #ff8c00;
+    padding: 10px;
+  }
+  #like_Q_ranking{
+    background-color: #fff;
+    border: solid 2px #ff8c00;
+    padding: 10px;
+    margin-top: 20px;
+  }
