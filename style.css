@@ -29,9 +29,8 @@ p.heart_num{
 
 
   .item_box{
-    border: solid 2px #ff8c00;
+    margin-bottom: 20px;
     vertical-align: top;
-    background-color: #ffe0b8;
     width: 320px;
     display: inline-block;
     font-size: 16px;
@@ -40,8 +39,6 @@ p.heart_num{
 }
     
   .middle_box{
-
-    background-color: #ffe0b8;
     display: inline-block;
     vertical-align: top;
     font-size: 0;
@@ -55,7 +52,7 @@ p.heart_num{
     position:fixed;
     z-index: 9999;/*ボタンを最前面に*/
     cursor: pointer;
-    color: salmon;
+    color: #ff8c00;
     background-color: white;
     width: 100%;
     height: 60px;
@@ -307,10 +304,9 @@ opacity: 0;
 pre{
     padding: 8px 19px;
     margin: 2em 0;
-    color: #2c2c2f;
-    background: #ffe0b8;
-    border-top: solid 2px #ff8c00;
-    border-bottom: solid 2px #ff8c00;
+    color: #fff;
+    background: #2c2c2f;
+    border-radius: 6px;
 }
 
 
@@ -441,7 +437,7 @@ div.ql-editor{
 .search_form{
   padding: 5px 10px 5px 20px;
   border-radius: 50px;
-  border: 2px solid coral;
+  border: 2px solid #ff8c00;
   background-color: #fff;
 }
 .fa-search{
@@ -542,10 +538,18 @@ i {
     background-color: #fff;
     border: solid 2px #ff8c00;
     padding: 10px;
+    border-radius: 6px;
   }
   #like_Q_ranking{
     background-color: #fff;
     border: solid 2px #ff8c00;
     padding: 10px;
     margin-top: 20px;
+    border-radius: 6px;
+  }
+  .contents{
+    border-radius: 12px;
+    background-color: #fff;
+    padding: 10px 10px;
+    margin: 10px 0;
   }
