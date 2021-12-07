@@ -453,6 +453,14 @@ div.ql-editor{
   line-height: inherit;;
   background-color: #fff;
 }
+div.search_tag{
+  padding: 5px 10%;
+  font-size: 0;
+}
+.search_tag a{
+  min-width: 50%;
+  display: inline-block;
+}
 
 ::-webkit-scrollbar {
   width: 16px;                /* スクロールバー全体の幅*/
