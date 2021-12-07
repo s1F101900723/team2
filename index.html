@@ -39,7 +39,7 @@
 <header id="header">
     <p class="header"><img class="header" src="./logo_menu.png">Questa</p>
 </header>
-<div class="bottom_right" data-toggle="modal" data-target="#testQModal">
+<div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;">
   <span></span>
   <span></span>
   <a class="block-baloon-right"></a>
@@ -365,8 +365,6 @@ i {
                     var LIKEList = data[3];
                     let likehtmltext = "";
                     let pointhtmltext = "";
-                    var USER_info = UserList.find(value => value.uid === GlobalUid);
-                    document.getElementById("form-name").value = USER_info.name;
                     var resultPointRank = UserList.filter(value => value.point !== '');
                     var resultLikeQRank = QList.filter(value => value.like_sum !== '');
 
@@ -430,6 +428,20 @@ i {
                     //quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
                     //document.getElementById("editor").innerHTML = resultA[2].text;
         
+                    if(GlobalUid==undefined){
+                      console.log("ログインしてください");
+                      var login_target_off = document.getElementsByClassName('btn-primary');
+                      for (var i = 0; i < login_target_off.length; i++){
+                        login_target_off[i].style.display = "none";
+                      }
+                      
+                    }
+                    else{
+                      var USER_info = UserList.find(value => value.uid === GlobalUid);
+                      document.getElementById("form-name").value = USER_info.name;
+                      var login_rightbottom_off = document.getElementsByClassName('bottom_right');
+                      login_rightbottom_off[0].style.display = "block";
+                    }
                 });
         }
         
