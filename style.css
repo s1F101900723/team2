@@ -387,3 +387,18 @@ div.ql-editor{
   overflow: auto;
   max-height: 200px;
 }
+.search_form input{
+  border: none;
+  outline: 0;
+}
+.search_form{
+  padding: 5px 10px 5px 20px;
+  border-radius: 50px;
+  border: 2px solid coral;
+}
+.fa-search{
+  color: #ff8c00;
+  float: right;
+  line-height: inherit;;
+  background-color: #fff;
+}
