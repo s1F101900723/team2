@@ -46,6 +46,9 @@ function FormGetAid(Aid_num){
     //console.log(Aid_num);
 }
 function Onheart(num){
+  if(GlobalUid==undefined){
+    alert("ログインしてください");
+  }else{
     FormGetAid(num);
     var form_Like = document.getElementsByClassName('form-like');
     for (var i = 0; i < form_Like.length; i++){
@@ -57,7 +60,11 @@ function Onheart(num){
     target_on[0].style.display = "none";
     target_off[0].style.display = "block";
   }
+  }
 function Offheart(num){
+  if(GlobalUid==undefined){
+    alert("ログインしてください");
+  }else{
     FormGetAid(num);
     var form_Like = document.getElementsByClassName('form-like');
     for (var i = 0; i < form_Like.length; i++){
@@ -68,6 +75,7 @@ function Offheart(num){
     var target_off = document.getElementsByClassName('heart_off '+num+'');
     target_on[0].style.display = "block";
     target_off[0].style.display = "none";
+  }
   }
 
 function edit(){
