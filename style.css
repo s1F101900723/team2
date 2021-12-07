@@ -82,10 +82,8 @@ p.heart_num{
 
 
   .right_box{
-
-    display: inline-block;
     width: 320px;
-    min-height: 400px;
+    display: inline-block;
     vertical-align: top;
     font-size: 16px;
 
@@ -94,7 +92,6 @@ p.heart_num{
 
     display: inline-block;
     width: 320px;
-    min-height: 400px;
     vertical-align: top;
     font-size: 16px;
 
@@ -454,12 +451,13 @@ div.ql-editor{
   background-color: #fff;
 }
 div.search_tag{
-  padding: 5px 10%;
+  padding: 5px 10% 10px 10%;
   font-size: 0;
 }
 .search_tag a{
   min-width: 50%;
   display: inline-block;
+  /*margin: 5px 0;*/
 }
 
 ::-webkit-scrollbar {
