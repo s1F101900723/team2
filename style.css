@@ -321,6 +321,9 @@ pre{
   .left_box{
     margin: 0;
   }
+  .middle_box{
+    margin-top: 20px;
+  }
 }
 @media (min-width: 700px) and (max-width: 1039.9px) {
   /*680 999.9*/
