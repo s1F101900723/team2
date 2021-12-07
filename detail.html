@@ -337,29 +337,29 @@
                     //console.log(resultLIKE);
                     var LIKE_aid = resultLIKE.map(value => value["aid"]);
                     //console.log(LIKE_aid);
-                    htmltext += '<p>質問</p>';
+                    htmltext += '<div class="detail_contents"><p>質問</p>';
                     htmltext += '<p>' + resultQ[0].title + '</p>';
                     htmltext += '<p>' + resultQ[0].text + '</p>';
-                    htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
+                    htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a></div>';
                     for (let i = 0; i < resultA.length; i++){
                       if(LIKE_aid.includes(resultA[i].aid)==true){
-                        htmltext += '<p>'+resultA[i].uid+'</p>';
-                        htmltext += '<p>'+resultA[i].text+'</p>';
+
+                        htmltext += '<div class="contents"><p>'+resultA[i].text+'</p>';
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
                         }
                         htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testpointModal">point</a>';
-                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
+                        htmltext += '<div class="heart_box"><div class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div></div>';
                         
                       }
                       else{
-                        htmltext += '<p>'+resultA[i].uid+'</p>';
-                        htmltext += '<p>'+resultA[i].text+'</p>';
+
+                        htmltext += '<div class="contents"><p>'+resultA[i].text+'</p>';
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
                         }
                         htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testpointModal">point</a>';
-                        htmltext += '<div class="heart_box"><div style="display: none;" class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div>';
+                        htmltext += '<div class="heart_box"><div style="display: none;" class="heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+resultA[i].like_sum+'</p></div></div>';
                       }
                     }
                     document.getElementById("detail_article").innerHTML = htmltext;
