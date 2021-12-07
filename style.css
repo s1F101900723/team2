@@ -384,5 +384,5 @@ div#firebaseui-container a{
 
 div.ql-editor{
   overflow: auto;
-  height: 200px;
+  max-height: 200px;
 }
