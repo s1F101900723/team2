@@ -30,7 +30,6 @@ var GlobalUid;
             handleSignedInUser(authResult.user);
           }
           if (authResult.additionalUserInfo) {
-            console.log("login");
             document.getElementById('is-new-user').textContent =
                 authResult.additionalUserInfo.isNewUser ?
                 'New User' : 'Existing User';
@@ -148,6 +147,8 @@ var GlobalUid;
     GlobalUid = user.uid;//グローバル変数でuidを設定
     console.log(GlobalUid,"login");
     load_sheet();
+    check();
+    console.log("name更新")
     var elems = document.getElementsByClassName('uid');
     for (var i = 0; i < elems.length; i++){
       elems[i].textContent= user.uid;
