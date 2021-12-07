@@ -37,7 +37,7 @@
 
 <body>
 <header id="header">
-    <p class="header"><img class="header" src="./logo_menu.png">Questa</p>
+  <a href="./index.html"><p class="header"><img class="header" src="./logo_menu.png">Questa</p></a>
 </header>
 <div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;">
   <span></span>
@@ -344,10 +344,10 @@
                     else{
                       htmltext += '<p>新規質問一覧</p>';
 
-                      for (let i = 0; i < resultQ.length; i++){
+                      for (let i=resultQ.length-1; i>=0; i--){//let i = 0; i < resultQ.length; i++
                           htmltext += '<div class="contents"><a href="./detail.html?id='+resultQ[i].qid+'">'+resultQ[i].title+'</a>';
                           htmltext += '<p>'+resultQ[i].text+'</p>';
-                          htmltext += '<div class="heart_box"><div class="heart_on '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div></div>';
+                          htmltext += '<div class="heart_box"><div class="far fa-heart heart '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div></div>';
                           
                       }
                     }
@@ -358,10 +358,10 @@
                     else{
                       htmltextA += '<p>回答一覧</p>';
 
-                      for (let i = 0; i < resultA.length; i++){
+                      for (let i=resultA.length-1; i>=0; i--){//let i = 0; i < resultA.length; i++
                           htmltextA += '<div class="contents"><a href="./detail.html?id='+resultA[i].qid+'">'+QList[(resultA[i].qid-1)].title+'</a>';
                           htmltextA += '<p>'+resultA[i].text+'</p>';
-                          htmltextA += '<div class="heart_box"><div class="heart_on '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
+                          htmltextA += '<div class="heart_box"><div class="far fa-heart heart '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
                           
                       }
                     }
