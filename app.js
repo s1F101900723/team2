@@ -30,6 +30,7 @@ var GlobalUid;
             handleSignedInUser(authResult.user);
           }
           if (authResult.additionalUserInfo) {
+            console.log(GlobalUid,"login");
             document.getElementById('is-new-user').textContent =
                 authResult.additionalUserInfo.isNewUser ?
                 'New User' : 'Existing User';
