@@ -47,7 +47,7 @@ p.heart_num{
     margin:0 auto;
   }
   .main{
-    margin-top: 60px;
+    margin-top: 80px;
 
   }
   #header{
@@ -87,7 +87,7 @@ p.heart_num{
     min-height: 400px;
     vertical-align: top;
     font-size: 16px;
-    margin-top: 50px;
+
   }
   .left_box{
     background-color: #ffffff;
@@ -96,7 +96,7 @@ p.heart_num{
     min-height: 400px;
     vertical-align: top;
     font-size: 16px;
-    margin-top: 50px;
+
     
   }
   body {
@@ -134,27 +134,18 @@ p.heart_num{
   }
   
   #photo-container {
-    background-color: #EEE;
-    border: 1px solid #CCC;
-    float: left;
-    height: 80px;
-    margin-right: 10px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
   }
   
   #photo {
-    height: 80px;
+    border-radius: 50px;
+    height: 50px;
     margin: 0;
-    width: 80px;
+    width: 50px;
   }
   
-  @media (max-width: 300px) {
-    #photo-container,
-    #photo {
-      height: 40px;
-      width: 40px;
-    }
-  }
+
 
 #g-nav{
   margin-top: 60px;
@@ -287,11 +278,14 @@ top:15px;
 }
 
 .openbtn span:nth-of-type(2) {
-top:23px;
+
+top: 31px;
 }
 
 .openbtn span:nth-of-type(3) {
-top:31px;
+/*top:23px;*/
+left: 0px;
+height: 0px;
 }
 
 .openbtn.active span:nth-of-type(1) {
@@ -300,17 +294,17 @@ top:31px;
   transform: translateY(6px) rotate(-45deg);
   width: 30%;
 }
-
-.openbtn.active span:nth-of-type(2) {
-opacity: 0;
-}
-
-.openbtn.active span:nth-of-type(3){
+.openbtn.active span:nth-of-type(2){
   top: 30px;
   left: 18px;
   transform: translateY(-6px) rotate(45deg);
   width: 30%;
 }
+.openbtn.active span:nth-of-type(3) {
+opacity: 0;
+}
+
+
 
 pre{
     padding: 8px 19px;
@@ -387,4 +381,9 @@ div#firebaseui-container a{
   letter-spacing: 0;
   font-weight: normal;
   color: #007bff;
+}
+
+div.ql-editor{
+  overflow: auto;
+  max-height: 200px;
 }
