@@ -30,7 +30,7 @@ var GlobalUid;
             handleSignedInUser(authResult.user);
           }
           if (authResult.additionalUserInfo) {
-            console.log(GlobalUid,"login");
+            console.log("login");
             document.getElementById('is-new-user').textContent =
                 authResult.additionalUserInfo.isNewUser ?
                 'New User' : 'Existing User';
@@ -48,6 +48,7 @@ var GlobalUid;
           // Required to enable ID token credentials for this provider.
           clientId: CLIENT_ID
         },
+        /*
         {
           provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
           scopes :[
@@ -59,7 +60,7 @@ var GlobalUid;
         },
         firebase.auth.TwitterAuthProvider.PROVIDER_ID,
         firebase.auth.GithubAuthProvider.PROVIDER_ID,
-        /*
+        
         {
           provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
           // Whether the display name should be displayed in Sign Up page.
@@ -145,7 +146,7 @@ var GlobalUid;
     document.getElementById('name').textContent = user.displayName;
     //document.getElementById('form-uid').value = user.uid;
     GlobalUid = user.uid;//グローバル変数でuidを設定
-    //console.log(GlobalUid);
+    console.log(GlobalUid,"login");
     load_sheet();
     var elems = document.getElementsByClassName('uid');
     for (var i = 0; i < elems.length; i++){
@@ -179,6 +180,9 @@ var GlobalUid;
   var handleSignedOutUser = function() {
     document.getElementById('user-signed-in').style.display = 'none';
     document.getElementById('user-signed-out').style.display = 'block';
+    GlobalUid = undefined;//グローバル変数でuidを設定
+    console.log(GlobalUid,"logout");
+    load_sheet();
     ui.start('#firebaseui-container', getUiConfig());
   };
   
