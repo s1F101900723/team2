@@ -347,7 +347,7 @@
                       for (let i = 0; i < resultQ.length; i++){
                           htmltext += '<div class="contents"><a href="./detail.html?id='+resultQ[i].qid+'">'+resultQ[i].title+'</a>';
                           htmltext += '<p>'+resultQ[i].text+'</p>';
-                          htmltext += '<div class="heart_box"><div class="heart_on '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div></div>';
+                          htmltext += '<div class="heart_box"><div class="far fa-heart heart '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div></div>';
                           
                       }
                     }
@@ -361,7 +361,7 @@
                       for (let i = 0; i < resultA.length; i++){
                           htmltextA += '<div class="contents"><a href="./detail.html?id='+resultA[i].qid+'">'+QList[(resultA[i].qid-1)].title+'</a>';
                           htmltextA += '<p>'+resultA[i].text+'</p>';
-                          htmltextA += '<div class="heart_box"><div class="heart_on '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
+                          htmltextA += '<div class="heart_box"><div class="far fa-heart heart '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
                           
                       }
                     }

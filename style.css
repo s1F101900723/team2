@@ -2,19 +2,24 @@
     box-sizing: border-box;
   }
 
+.heart {
+  font-size: 24px;
+  color: #ff8c00;
+  font-weight: 400;
+}
 .heart_off {
-  width: 24px; /* pathのサイズ */
-  height: 24px; /* pathのサイズ */
-  background: #ffffff; /* 色 */
-  clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
-  transform: scale(1);
+  font-size: 24px;
+  color: #ff004b;
+  font-weight: 400;
 }
 .heart_on {
-  width: 24px; /* pathのサイズ */
-  height: 24px; /* pathのサイズ */
-  background: #ff0077; /* 色 */
+  font-size: 24px;
+  color: #FF004B;
+  font-weight: 900;
+  /*
   clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
   transform: scale(1);
+  */
 }
 .heart_box{
   margin: 0px 20px;
@@ -522,10 +527,7 @@ div.search_tag{
   z-index: 1;
 
 }
-i {
-  font-size: 24px;
-  color: aquamarine;
-}
+
 .name_form_hidden {
   display: none;
 }
