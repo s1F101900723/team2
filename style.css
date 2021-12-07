@@ -382,3 +382,7 @@ div#firebaseui-container a{
   font-weight: normal;
   color: #007bff;
 }
+
+div.ql-editor{
+  overflow: auto;
+}
