@@ -295,17 +295,17 @@ left: 0px;
   transform: translateY(6px) rotate(-45deg);
   width: 30%;
 }
-
-.openbtn.active span:nth-of-type(2) {
-opacity: 0;
-}
-
-.openbtn.active span:nth-of-type(3){
+.openbtn.active span:nth-of-type(2){
   top: 30px;
   left: 18px;
   transform: translateY(-6px) rotate(45deg);
   width: 30%;
 }
+.openbtn.active span:nth-of-type(3) {
+opacity: 0;
+}
+
+
 
 pre{
     padding: 8px 19px;
