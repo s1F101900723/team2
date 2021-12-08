@@ -143,6 +143,7 @@ p.heart_num{
   #photo-container {
     height: 50px;
     width: 50px;
+    position: relative;
   }
   
   #photo {
@@ -150,6 +151,7 @@ p.heart_num{
     height: 40px;
     margin: 5px;
     width: 40px;
+    position: absolute;
   }
   .fa-user-circle{
     font-size: 40px;
