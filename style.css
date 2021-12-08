@@ -144,6 +144,7 @@ p.heart_num{
     height: 50px;
     width: 50px;
     position: relative;
+    text-align: center;
   }
   
   #photo {
@@ -158,7 +159,6 @@ p.heart_num{
     font-size: 40px;
     color: #666;
     margin: 5px;
-    width: 40px;
   }
   
 
