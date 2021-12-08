@@ -152,11 +152,13 @@ p.heart_num{
     margin: 5px;
     width: 40px;
     position: absolute;
+    right: 0px;
   }
   .fa-user-circle{
     font-size: 40px;
     color: #666;
     margin: 5px;
+    width: 40px;
   }
   
 
