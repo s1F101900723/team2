@@ -124,5 +124,4 @@ function getpreQuestion(num){
           }});
           quillQ.clipboard.dangerouslyPasteHTML(pretext_Q[0].text);
       });
-  FormGetAid(num);
 }
