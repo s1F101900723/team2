@@ -124,7 +124,7 @@
 
     <div class="middle_box">
         <div class="detail_item_box">
-            <form style="display: none;" name="likeform" action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec" method="POST" target="sendPhoto">
+            <form name="likeform" action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec" method="POST" target="sendPhoto">
               <input name="form" value="like">
               <input name="form_like" class="form-like">
               <input name="form_uid" class="form-uid uid" value="none">
@@ -350,7 +350,7 @@
                       htmltext += '<div class="heart_box"><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div style="display: none;" class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
                     }
 
-                    
+
                     for (let i = 0; i < resultA.length; i++){
                       if(LIKE_aid.includes(resultA[i].aid)==true){
 
