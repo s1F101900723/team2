@@ -123,5 +123,9 @@ function getpreQuestion(num){
           return true;
           }});
           quillQ.clipboard.dangerouslyPasteHTML(pretext_Q[0].text);
+          Q_title = document.getElementsByClassName("Q_title");
+          for (var i = 0; i < Q_title.length; i++){
+            Q_title[i].value= pretext_Q[0].title;
+          }
       });
 }
