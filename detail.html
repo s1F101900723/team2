@@ -343,8 +343,14 @@
                     htmltext += '<p>' + resultQ[0].title + '</p>';
                     htmltext += '<p>' + resultQ[0].text + '</p>';
                     htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a></div>';
-                    htmltext += '<div class="heart_box"><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div style="display: none;" class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
+                    if(LIKE_aid.includes(0)==true){
+                      htmltext += '<div class="heart_box"><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div style="display: none;" class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
+                    }
+                    else{
+                      htmltext += '<div class="heart_box"><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div style="display: none;" class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
+                    }
 
+                    
                     for (let i = 0; i < resultA.length; i++){
                       if(LIKE_aid.includes(resultA[i].aid)==true){
 
