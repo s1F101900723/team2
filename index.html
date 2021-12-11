@@ -324,7 +324,7 @@
                     pointhtmltext +='<p>#PointRanking</p>';
                     resultPointRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      pointhtmltext += "<li>" + (i + 1) + "位　" + e.name + "　" + e.point + " point</li>";
+                      pointhtmltext += "<li>" + (i + 1) + "位　" + e.name + "　" + e.point + " points</li>";
                     });
                     document.getElementById("point_ranking").innerHTML = pointhtmltext;
 
@@ -380,6 +380,7 @@
         
                     if(GlobalUid==undefined){
                       console.log("ログインしてください");
+                      document.getElementById('photo').style.display = "none";
                       var login_target_off = document.getElementsByClassName('btn-primary');
                       for (var i = 0; i < login_target_off.length; i++){
                         login_target_off[i].style.display = "none";
