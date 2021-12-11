@@ -370,7 +370,7 @@
                     //document.getElementById("editor").innerHTML = resultA[2].text;
                     if(GlobalUid==undefined){
                       console.log("ログインしてください");
-                      document.getElementById('photo').src = "";
+                      document.getElementById('photo').style.display = "none";
                       var login_target_off = document.getElementsByClassName('btn-primary');
                       for (var i = 0; i < login_target_off.length; i++){
                         login_target_off[i].style.display = "none";
