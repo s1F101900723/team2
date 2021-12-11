@@ -386,6 +386,10 @@
                         login_target_off[i].style.display = "none";
                       }
                       
+                      var login_target_point = document.getElementsByClassName('login_must');
+                      for (var i = 0; i < login_target_point.length; i++){
+                        login_target_point[i].style.cssText = "pointer-events:none;";
+                      }
                     }
                     else{
                       var USER_info = UserList.find(value => value.uid === GlobalUid);
