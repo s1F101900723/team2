@@ -110,3 +110,19 @@ function getpretext(num){
         });
     FormGetAid(num);
 }
+
+function getpreQuestion(num){
+  var endpoint ="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";
+  fetch(endpoint)
+      .then(response => response.json())
+      /*成功した処理*/
+      .then(data => {
+          //JSONから配列に変換
+          var QList = data[2];
+          var pretext_Q=QList.filter(value => {if(value.qid === num && value.uid === GlobalUid){
+          return true;
+          }});
+          quillQ.clipboard.dangerouslyPasteHTML(pretext_Q[0].text);
+      });
+  FormGetAid(num);
+}

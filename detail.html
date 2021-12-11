@@ -336,17 +336,23 @@
                     var resultLIKE = LIKEList.filter(value => {if(value.uid === GlobalUid && value.qid === url && value.like_num === 1){
                       return true;
                     }});
-                    console.log(resultLIKE);
+                    //console.log(resultLIKE);
                     var LIKE_aid = resultLIKE.map(value => value["aid"]);
-                    console.log(LIKE_aid);
+                    //console.log(LIKE_aid);
                     htmltext += '<div class="detail_contents"><p>質問</p>';
                     htmltext += '<p>' + resultQ[0].title + '</p>';
                     htmltext += '<p>' + resultQ[0].text + '</p>';
                     htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a></div>';
                     if(LIKE_aid.includes(0)==true){
+                      if(GlobalUid==resultQ[0].uid){
+                          htmltext += '<a onclick="getpreQuestion('+resultQ[0].qid+')" class="btn btn-primary" data-toggle="modal" data-target="#testQModal">編集</a>';
+                        }
                       htmltext += '<div class="heart_box"><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div style="display: none;" class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
                     }
                     else{
+                      if(GlobalUid==resultQ[0].uid){
+                          htmltext += '<a onclick="getpreQuestion('+resultQ[0].qid+')" class="btn btn-primary" data-toggle="modal" data-target="#testQModal">編集</a>';
+                        }
                       htmltext += '<div class="heart_box"><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div style="display: none;" class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
                     }
 
