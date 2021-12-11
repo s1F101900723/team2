@@ -336,7 +336,7 @@
                     var resultLIKE = LIKEList.filter(value => {if(value.uid === GlobalUid && value.qid === url && value.like_num === 1){
                       return true;
                     }});
-                    //console.log(resultLIKE);
+                    console.log(resultLIKE);
                     var LIKE_aid = resultLIKE.map(value => value["aid"]);
                     console.log(LIKE_aid);
                     htmltext += '<div class="detail_contents"><p>質問</p>';
