@@ -315,14 +315,14 @@
                     pointhtmltext +='<p>#PointRanking</p>';
                     resultPointRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      pointhtmltext += "<li>" + (i + 1) + "位" + "user : " + e.name + " point : " + e.point + "</li>";
+                      pointhtmltext += "<li>" + (i + 1) + "位　" + e.name + "　" + e.point + " point</li>";
                     });
                     document.getElementById("point_ranking").innerHTML = pointhtmltext;
 
-                    likehtmltext +='<p>#LikeRanking</p>';
+                    likehtmltext +='<p>#LikesRanking</p>';
                     resultLikeQRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      likehtmltext += "<li>" + (i + 1) + "位" + "title : " + e.title + " like : " + e.like_sum + "</li>";
+                      likehtmltext += "<li>" + (i + 1) + "位　" + e.title + "　" + e.like_sum + " likes</li>";
                     });
                     document.getElementById("like_Q_ranking").innerHTML = likehtmltext;
 
@@ -350,8 +350,8 @@
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
                         }
-                        htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testpointModal">point</a>';
-                        htmltext += '<div class="heart_box"><div class="far fa-heart heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="far fa-heart heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
+                        
+                        htmltext += '<div class="heart_box"><div><a href="" onclick="FormGetAid('+resultA[i].aid+')" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div class="far fa-heart heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="far fa-heart heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
                         
                       }
                       else{
@@ -360,8 +360,8 @@
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
                         }
-                        htmltext += '<a onclick="FormGetAid('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testpointModal">point</a>';
-                        htmltext += '<div class="heart_box"><div style="display: none;" class="far fa-heart heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="far fa-heart heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
+                        
+                        htmltext += '<div class="heart_box"><div><a href="" onclick="FormGetAid('+resultA[i].aid+')" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div style="display: none;" class="far fa-heart heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="far fa-heart heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
                       }
                     }
                     document.getElementById("detail_article").innerHTML = htmltext;

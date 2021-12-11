@@ -324,14 +324,14 @@
                     pointhtmltext +='<p>#PointRanking</p>';
                     resultPointRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      pointhtmltext += "<li>" + (i + 1) + "位" + "user : " + e.name + " point : " + e.point + "</li>";
+                      pointhtmltext += "<li>" + (i + 1) + "位　" + e.name + "　" + e.point + " point</li>";
                     });
                     document.getElementById("point_ranking").innerHTML = pointhtmltext;
 
-                    likehtmltext +='<p>#LikeRanking</p>';
+                    likehtmltext +='<p>#LikesRanking</p>';
                     resultLikeQRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      likehtmltext += "<li>" + (i + 1) + "位" + "title : " + e.title + " like : " + e.like_sum + "</li>";
+                      likehtmltext += "<li>" + (i + 1) + "位　" + e.title + "　" + e.like_sum + " likes</li>";
                     });
                     document.getElementById("like_Q_ranking").innerHTML = likehtmltext;
 

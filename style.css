@@ -13,11 +13,16 @@ img{
   font-size: 24px;
   color: #ff004b;
   font-weight: 400;
+  margin: -10px -30px 0px -10px;
+  padding:10px 30px 0px 10px;
+
 }
 .heart_on {
   font-size: 24px;
   color: #FF004B;
   font-weight: 900;
+  margin: -10px -30px 0px -10px;
+  padding:10px 30px 0px 10px;
   /*
   clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
   transform: scale(1);
@@ -564,15 +569,31 @@ div.search_tag{
     background-color: #fff;
     border: solid 2px #ff8c00;
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 12px;
+    list-style: none;
   }
   #like_Q_ranking{
     background-color: #fff;
     border: solid 2px #ff8c00;
     padding: 10px;
     margin-top: 20px;
-    border-radius: 6px;
+    border-radius: 12px;
+    list-style: none;
   }
+  #point_ranking p{
+    color: #ff8c00;
+    font-weight: 700;
+    margin: 0;
+    font-size: 18px;
+  }
+
+  #like_Q_ranking p{
+    color: #ff8c00;
+    font-weight: 700;
+    margin: 0;
+    font-size: 18px;
+  }
+
   .contents{
     border-radius: 12px;
     background-color: #fff;
@@ -588,4 +609,10 @@ div.search_tag{
   }
   .modal-content{
     border-radius: 12px;
+  }
+  a.fa-product-hunt{
+    font-size: 24px;
+    margin: -10px -30px -10px -10px;
+    padding:10px 30px 10px 10px;
+    color: #ff8c00;
   }
