@@ -531,16 +531,16 @@ div.search_tag{
   width: 80px;
   height: 70px;
 	position: relative;
-	background-color: #f2f2f2;/* 背景色 */
-	border: 2px solid #ff8c00;/* 枠線太さ、色 */
+	background-color: #fff;/* 背景色 */
+	border: 4px solid #ff8c00;/* 枠線太さ、色 */
   border-radius: 50px;
 }
 
 .block-baloon-right:before, .block-baloon-right:after	{
   content: '';
 	position: absolute;
-  right: -2px;/* 枠線太さ */
-  bottom: -2px;
+  right: -6.5px;/* 枠線太さ */
+  bottom: -4px;
   border-right: 40px solid transparent;
   border-bottom: 40px solid #ff8c00;
   z-index: -1;
@@ -549,7 +549,7 @@ div.search_tag{
 	right: 3px;/* 枠線太さ */
   bottom: 0;
   border-right: 30px solid transparent;
-  border-bottom: 30px solid #f2f2f2;
+  border-bottom: 30px solid #fff;
   z-index: 1;
 
 }
@@ -615,4 +615,8 @@ div.search_tag{
     margin: -10px -30px -10px -10px;
     padding:10px 30px 10px 10px;
     color: #ff8c00;
+  }
+
+  input{
+    font-size: 16px;
   }
