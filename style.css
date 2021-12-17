@@ -618,6 +618,7 @@ div.search_tag{
 
   input{
     font-size: 16px;
+    line-height: inherit;
   }
   form{
     align-items: center;
