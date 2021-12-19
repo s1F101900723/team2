@@ -625,3 +625,9 @@ div.search_tag{
   form{
     align-items: center;
   }
+  .name_edit_on{
+    line-height: 1.5;
+  }
+  .name_edit_off{
+    line-height: 1.5;
+  }
