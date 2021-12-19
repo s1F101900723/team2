@@ -630,6 +630,7 @@ div.search_tag{
     background-color: #fff;
     color: #ff8c00;
     border: 1px solid;
+    padding: 3px 6px;
     border-radius: 0.67em;
   }
   .name_edit_off{
