@@ -628,13 +628,18 @@ div.search_tag{
   .name_edit_on{
     line-height: inherit;
     background-color: #fff;
+    border: 0;
     color: #ff8c00;
   }
   .name_edit_off{
     line-height: inherit;
     background-color: #fff;
+    border: 0;
     color: #ff8c00;
   }
   label{
     display: block;
+  }
+  button{
+    border: 0;
   }

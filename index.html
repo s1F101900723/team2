@@ -124,6 +124,7 @@
     <div class="middle_box">
         <div class="item_box" style="min-height: 200px;">
           <div id="question_list"></div>
+          <button onclick="show_listQ()">その他の質問を見る</button>
         </div>
         <div class="item_box">
             <form style="display: none;" name="likeform" action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec" method="POST" target="sendPhoto">
@@ -134,6 +135,7 @@
               <input name="form_Aid" class="form-Aid">
             </form>
             <div id="answer_list"></div>
+            <button onclick="show_listA()">その他の回答を見る</button>
             <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -268,7 +270,40 @@
 </div>
 
     <script>
-
+        var show_numQ = 3;
+        var show_numA = 3;
+        function show_listQ(){
+          show_numQ += 3;
+          var showQ = document.getElementById('question_list').getElementsByClassName('contents');
+          console.log(showQ.length, show_numQ);
+          if (showQ.length<show_numQ){
+            for (var i = 0; i < showQ.length; i++){
+              showQ[i].style.cssText = "display: block;";
+              console.log(showQ.length, show_numQ,"block");
+            }
+          }
+          else{
+            for (var i = 0; i < show_numQ; i++){
+              showQ[i].style.cssText = "display: block;";
+            }
+          }
+        }
+        function show_listA(){
+          show_numA += 3;
+          var showA = document.getElementById('answer_list').getElementsByClassName('contents');
+          console.log(showA.length, show_numA);
+          if (showA.length<show_numA){
+            for (var i = 0; i < showA.length; i++){
+              showA[i].style.cssText = "display: block;";
+              console.log(showA.length, show_numA,"block");
+            }
+          }
+          else{
+            for (var i = 0; i < show_numA; i++){
+              showA[i].style.cssText = "display: block;";
+            }
+          }
+        }
         var str=location.href;
         var url = decodeURI(location.search.substring(4));//idが整数の場合
         let result = str.split("/").filter(e => Boolean(e));
@@ -398,12 +433,23 @@
                     for (var i = 0; i < login_target_point_top.length; i++){
                       login_target_point_top[i].style.cssText = "pointer-events:none;";
                     }
+
+                    var showQ = document.getElementById('question_list').getElementsByClassName('contents');
+                    console.log(showQ.length, show_numQ);
+                    for (var i = show_numQ; i < showQ.length; i++){
+                      showQ[i].style.cssText = "display: none;";
+                    }
+                    var showA = document.getElementById('answer_list').getElementsByClassName('contents');
+                    console.log(showA.length, show_numA);
+                    for (var i = show_numA; i < showA.length; i++){
+                      showA[i].style.cssText = "display: none;";
+                    }
                 });
         }
         
 
         load_sheet();
-    
+
         const $form = $('#form')
         $('.btn-send').on('click', evt => {
             $("#form_text").val(quill.root.innerHTML);
