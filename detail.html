@@ -382,7 +382,6 @@
                     //quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
                     //document.getElementById("editor").innerHTML = resultA[2].text;
                     if(GlobalUid==undefined){
-                      console.log("ログインしてください");
                       document.getElementById('photo').style.display = "none";
                       var login_target_off = document.getElementsByClassName('btn-primary');
                       for (var i = 0; i < login_target_off.length; i++){
@@ -392,7 +391,6 @@
                       var login_target_point = document.getElementsByClassName('login_must');
                       for (var i = 0; i < login_target_point.length; i++){
                         login_target_point[i].style.cssText = "pointer-events:none;";
-                        alert("ログインしてください");
                       }
                       
                     }
