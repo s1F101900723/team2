@@ -637,3 +637,6 @@ div.search_tag{
     border: none;
     color: #fff;
   }
+  label{
+    display: block;
+  }
