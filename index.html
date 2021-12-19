@@ -290,6 +290,7 @@
               }, 5000);
         });
         
+
         //window.onload = function(){
           //600000ミリ秒（600秒）毎に関数を呼び出す
         //  setInterval("load_sheet()", 600000);
@@ -343,7 +344,6 @@
                       return true;
                     }});
                     var resultA = AList.filter(value => value.text.match(regexp));
-
                     if(resultQ.length==0){
                       htmltext+='<p>「'+url+'」の検索結果がありません</p>';
                     }
@@ -353,8 +353,7 @@
                       for (let i=resultQ.length-1; i>=0; i--){//let i = 0; i < resultQ.length; i++
                           htmltext += '<div class="contents"><a href="./detail.html?id='+resultQ[i].qid+'">'+resultQ[i].title+'</a>';
                           htmltext += '<p>'+resultQ[i].text+'</p>';
-                          htmltext += '<div class="heart_box"><div class="far fa-heart heart '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div></div>';
-                          
+                          htmltext += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must"></a></div><p>'+(0+Number(resultQ[i].point))+'</p><div class="far fa-heart heart '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div></div></div>';
                       }
                     }
 
@@ -367,8 +366,7 @@
                       for (let i=resultA.length-1; i>=0; i--){//let i = 0; i < resultA.length; i++
                           htmltextA += '<div class="contents"><a href="./detail.html?id='+resultA[i].qid+'">'+QList[(resultA[i].qid-1)].title+'</a>';
                           htmltextA += '<p>'+resultA[i].text+'</p>';
-                          htmltextA += '<div class="heart_box"><div class="far fa-heart heart '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
-                          
+                          htmltextA += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div class="far fa-heart heart '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div></div>';
                       }
                     }
                     document.getElementById("question_list").innerHTML = htmltext;

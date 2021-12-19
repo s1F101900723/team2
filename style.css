@@ -6,8 +6,8 @@ img{
 }
 .heart {
   font-size: 24px;
-  color: #ff8c00;
-  font-weight: 400;
+  color: #ff004b;
+  font-weight: 900;
   margin: -10px -30px 0px -10px;
   padding: 10px 30px 0px 10px;
 }
@@ -633,9 +633,9 @@ div.search_tag{
   }
   .name_edit_off{
     line-height: 1.5;
-    background-color: #ff8c00;
-    border: none;
-    color: #fff;
+    background-color: #fff;
+    border-color: #fff;
+    color: #ff8c00;
   }
   label{
     display: block;
