@@ -353,7 +353,7 @@
                       for (let i=resultQ.length-1; i>=0; i--){//let i = 0; i < resultQ.length; i++
                           htmltext += '<div class="contents"><a href="./detail.html?id='+resultQ[i].qid+'">'+resultQ[i].title+'</a>';
                           htmltext += '<p>'+resultQ[i].text+'</p>';
-                          htmltext += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must"></a></div><p>'+(0+Number(resultQ[i].point))+'</p><div class="far fa-heart heart '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div></div></div>';
+                          htmltext += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must_top"></a></div><p>'+(0+Number(resultQ[i].point))+'</p><div class="far fa-heart heart '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div></div></div>';
                       }
                     }
 
@@ -366,7 +366,7 @@
                       for (let i=resultA.length-1; i>=0; i--){//let i = 0; i < resultA.length; i++
                           htmltextA += '<div class="contents"><a href="./detail.html?id='+resultA[i].qid+'">'+QList[(resultA[i].qid-1)].title+'</a>';
                           htmltextA += '<p>'+resultA[i].text+'</p>';
-                          htmltextA += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div class="far fa-heart heart '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div></div>';
+                          htmltextA += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must_top"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div class="far fa-heart heart '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div></div>';
                       }
                     }
                     document.getElementById("question_list").innerHTML = htmltext;
@@ -386,6 +386,10 @@
                       var login_target_point = document.getElementsByClassName('login_must');
                       for (var i = 0; i < login_target_point.length; i++){
                         login_target_point[i].style.cssText = "pointer-events:none;";
+                      }
+                      var login_target_point_top = document.getElementsByClassName('login_must_top');
+                      for (var i = 0; i < login_target_point_top.length; i++){
+                        login_target_point_top[i].style.cssText = "pointer-events:none;";
                       }
                     }
                     else{
