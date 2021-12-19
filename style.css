@@ -627,9 +627,9 @@ div.search_tag{
   }
   .name_edit_on{
     line-height: 1.5;
-    background-color: #ff8c00;
-    border: none;
-    color: #fff;
+    background-color: #fff;
+    border-color: #fff;
+    color: #ff8c00;
   }
   .name_edit_off{
     line-height: 1.5;
