@@ -376,7 +376,7 @@
                     //document.getElementById("editor").innerHTML = resultA[2].text;
         
                     if(GlobalUid==undefined){
-                      console.log("ログインしてください");
+                      //console.log("ログインしてください");
                       document.getElementById('photo').style.display = "none";
                       var login_target_off = document.getElementsByClassName('btn-primary');
                       for (var i = 0; i < login_target_off.length; i++){
@@ -386,10 +386,7 @@
                       var login_target_point = document.getElementsByClassName('login_must');
                       for (var i = 0; i < login_target_point.length; i++){
                         login_target_point[i].style.cssText = "pointer-events:none;";
-                      }
-                      var login_target_point_top = document.getElementsByClassName('login_must_top');
-                      for (var i = 0; i < login_target_point_top.length; i++){
-                        login_target_point_top[i].style.cssText = "pointer-events:none;";
+                        alert("ログインしてください");
                       }
                     }
                     else{
@@ -397,6 +394,10 @@
                       document.getElementById("form-name").value = USER_info.name;
                       var login_rightbottom_off = document.getElementsByClassName('bottom_right');
                       login_rightbottom_off[0].style.display = "block";
+                    }
+                    var login_target_point_top = document.getElementsByClassName('login_must_top');
+                    for (var i = 0; i < login_target_point_top.length; i++){
+                      login_target_point_top[i].style.cssText = "pointer-events:none;";
                     }
                 });
         }
