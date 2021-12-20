@@ -689,3 +689,6 @@ div.search_tag{
   input#form-name {
     padding: 1px 10px;
   }
+  .Q_title{
+    width: 100%;
+  }
