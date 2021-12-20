@@ -18,9 +18,11 @@ var config = {
     projectId: "login-test-b09e3",
     storageBucket: "login-test-b09e3.appspot.com",
     messagingSenderId: "179784899863",
-    appId: "1:179784899863:web:c2116ddaef6bfc7c89ab52"
+    appId: "1:179784899863:web:c2116ddaef6bfc7c89ab52",
+    measurementId: "G-05J8LDGK7P"
   };
   firebase.initializeApp(config);
+  firebase.getAnalytics(app);
   
   
   // Google OAuth Client ID, needed to support One-tap sign-up.
