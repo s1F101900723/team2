@@ -630,11 +630,13 @@ div.search_tag{
     line-height: inherit;
     color: #ff8c00;
     background: #fff;
+    border: none;
   }
   .name_edit_off{
     line-height: inherit;
     color: #ff8c00;
     background: #fff;
+    border: none;
   }
   label{
     display: block;
@@ -652,5 +654,11 @@ div.search_tag{
   }
   #user-signed-in button{
     font-size: 12px;
-    background: none;
+    background: #fff;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    border: none;
+  }
+  #user-signed-in input{
+    border: none;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
   }
