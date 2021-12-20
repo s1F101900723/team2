@@ -629,6 +629,9 @@ div.search_tag{
   form{
     align-items: center;
   }
+  #user-signed-in{
+    color: #757575;
+  }
   .name_edit_on{
     line-height: inherit;
     color: #ff8c00;
@@ -655,13 +658,18 @@ div.search_tag{
     width: 100%;
     padding: 5px 0px;
   }
+  
   #user-signed-in button{
     font-size: 12px;
     background: #fff;
     box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
     border: none;
+    margin: 0px 5px;
   }
   #user-signed-in input{
     border: none;
     box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+  }
+  input#form-name {
+    padding: 1px 10px;
   }
