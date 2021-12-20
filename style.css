@@ -44,12 +44,17 @@ div.left_icon{
   margin-right: auto;
   font-size:0;
 }
-.btn_blue{
+a.btn_blue{
   margin-right: 10px;
   font-size: inherit;
   background-color: #007bff;
   color: #fff;
   border-radius: 0.25rem;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 
