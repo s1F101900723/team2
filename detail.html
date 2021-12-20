@@ -343,20 +343,20 @@
                     htmltext += '<p>' + resultQ[0].text + '</p></div>';
                     
                     if(LIKE_aid.includes(0)==true){
-                      htmltext += '<div class="heart_box">';
+                      htmltext += '<div class="heart_box"><div class="left_icon">';
                       if(GlobalUid==resultQ[0].uid){
                         htmltext += '<a onclick="getpreQuestion('+resultQ[0].qid+')" class="btn btn-primary" data-toggle="modal" data-target="#testQModal">編集</a>';
                       }
                       htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
-                      htmltext +='<div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div style="display: none;" class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
+                      htmltext +='</div><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div style="display: none;" class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
                     }
                     else{
-                      htmltext += '<div class="heart_box">';
+                      htmltext += '<div class="heart_box"><div class="left_icon">';
                       if(GlobalUid==resultQ[0].uid){
                         htmltext += '<a onclick="getpreQuestion('+resultQ[0].qid+')" class="btn btn-primary" data-toggle="modal" data-target="#testQModal">編集</a>';
                       }
                       htmltext += '<a onclick="FormGetAid(null)" class="btn btn-primary" data-toggle="modal" data-target="#testModal">回答する</a>';
-                      htmltext += '<div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div style="display: none;" class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
+                      htmltext += '</div><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultQ[0].point))+'</p><div style="display: none;" class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+(0+Number(resultQ[0].like_sum))+'</p></div></div>';
                     }
 
 
@@ -364,21 +364,21 @@
                       if(LIKE_aid.includes(resultA[i].aid)==true){
 
                         htmltext += '<div class="contents"><p>'+resultA[i].text+'</p>';                 
-                        htmltext += '<div class="heart_box">';
+                        htmltext += '<div class="heart_box"><div class="left_icon">';
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
                         }
-                        htmltext += '<div><a href="" onclick="FormGetAid('+resultA[i].aid+')" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div class="far fa-heart heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="far fa-heart heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
+                        htmltext += '</div><div><a href="" onclick="FormGetAid('+resultA[i].aid+')" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div class="far fa-heart heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div style="display: none;" class="far fa-heart heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
                         
                       }
                       else{
 
                         htmltext += '<div class="contents"><p>'+resultA[i].text+'</p>';
-                        htmltext += '<div class="heart_box">';
+                        htmltext += '<div class="heart_box"><div class="left_icon">';
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn btn-primary" data-toggle="modal" data-target="#testModal">編集</a>';
                         }
-                        htmltext += '<div><a href="" onclick="FormGetAid('+resultA[i].aid+')" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div style="display: none;" class="far fa-heart heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="far fa-heart heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
+                        htmltext += '</div><div><a href="" onclick="FormGetAid('+resultA[i].aid+')" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div style="display: none;" class="far fa-heart heart_on '+resultA[i].aid+'" onclick="Onheart('+resultA[i].aid+')"></div><div class="far fa-heart heart_off '+resultA[i].aid+'" onclick="Offheart('+resultA[i].aid+')"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div>';
                       }
                     }
                     document.getElementById("detail_article").innerHTML = htmltext;
