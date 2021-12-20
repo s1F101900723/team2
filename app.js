@@ -145,10 +145,10 @@ var GlobalUid;
     document.getElementById('name').textContent = user.displayName;
     //document.getElementById('form-uid').value = user.uid;
     GlobalUid = user.uid;//グローバル変数でuidを設定
-    console.log(GlobalUid,"login");
+    //console.log(GlobalUid,"login");
     load_sheet();
     check();
-    console.log("name更新")
+    //console.log("name更新")
     var elems = document.getElementsByClassName('uid');
     for (var i = 0; i < elems.length; i++){
       elems[i].textContent= user.uid;
@@ -182,7 +182,7 @@ var GlobalUid;
     document.getElementById('user-signed-in').style.display = 'none';
     document.getElementById('user-signed-out').style.display = 'block';
     GlobalUid = undefined;//グローバル変数でuidを設定
-    console.log(GlobalUid,"logout");
+    //console.log(GlobalUid,"logout");
     load_sheet();
     ui.start('#firebaseui-container', getUiConfig());
   };
