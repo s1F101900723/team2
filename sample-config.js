@@ -22,7 +22,7 @@ var config = {
     measurementId: "G-05J8LDGK7P"
   };
   firebase.initializeApp(config);
-  firebase.getAnalytics(app);
+  firebase.getAnalytics(firebase.initializeApp(config));
   
   
   // Google OAuth Client ID, needed to support One-tap sign-up.
