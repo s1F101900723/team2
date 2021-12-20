@@ -629,10 +629,12 @@ div.search_tag{
   .name_edit_on{
     line-height: inherit;
     color: #ff8c00;
+    background: #fff;
   }
   .name_edit_off{
     line-height: inherit;
     color: #ff8c00;
+    background: #fff;
   }
   label{
     display: block;
