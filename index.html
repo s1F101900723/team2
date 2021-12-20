@@ -370,7 +370,7 @@
                     likehtmltext +='<p>#LikesRanking</p>';
                     resultLikeQRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      likehtmltext += "<li>" + (i + 1) + "位　" + e.title + "　" + e.like_sum + " likes</li>";
+                      likehtmltext += "<li>" + (i + 1) + '位　<a href="./detail.html?id='+e.qid+'">' + e.title + "</a>　" + e.like_sum + " likes</li>";
                     });
                     document.getElementById("like_Q_ranking").innerHTML = likehtmltext;
 
