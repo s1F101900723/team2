@@ -44,6 +44,13 @@ div.left_icon{
   margin-right: auto;
   font-size:0;
 }
+.btn_blue{
+  margin-right: 10px;
+  font-size: inherit;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 0.25rem;
+}
 
 
   .item_box{
