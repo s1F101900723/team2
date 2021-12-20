@@ -274,6 +274,10 @@
 </div>
 
     <script>
+      const fmt =  new Intl.NumberFormat("en-GB",{ 
+          notation: "compact",
+          compactDisplay: "short"
+      });
         var show_numQ = 3;
         var show_numA = 3;
         function show_listQ(){
@@ -363,14 +367,14 @@
                     pointhtmltext +='<p>#PointRanking</p>';
                     resultPointRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      pointhtmltext += "<li>" + (i + 1) + "位　" + e.name + "　" + e.point + " points</li>";
+                      pointhtmltext += "<li>" + (i + 1) + "位　" + e.name + "　" + fmt.format(BigInt(e.point) ) + " points</li>";
                     });
                     document.getElementById("point_ranking").innerHTML = pointhtmltext;
 
                     likehtmltext +='<p>#LikesRanking</p>';
                     resultLikeQRank.reverse().map((e, i) => {
                       if ((i+1) > 3) return 
-                      likehtmltext += "<li>" + (i + 1) + '位　<a href="./detail.html?id='+e.qid+'">' + e.title + "</a>　" + e.like_sum + " likes</li>";
+                      likehtmltext += "<li>" + (i + 1) + '位　<a href="./detail.html?id='+e.qid+'">' + e.title + "</a>　" + fmt.format(BigInt(e.like_sum) ) + " likes</li>";
                     });
                     document.getElementById("like_Q_ranking").innerHTML = likehtmltext;
 
@@ -392,7 +396,7 @@
                       for (let i=resultQ.length-1; i>=0; i--){//let i = 0; i < resultQ.length; i++
                           htmltext += '<div class="contents"><a href="./detail.html?id='+resultQ[i].qid+'">'+resultQ[i].title+'</a>';
                           htmltext += '<p>'+resultQ[i].text+'</p>';
-                          htmltext += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must_top"></a></div><p>'+(0+Number(resultQ[i].point))+'</p><div class="far fa-heart heart '+resultQ[i].qid+'"></div><p class="heart_num">'+(0+Number(resultQ[i].like_sum))+'</p></div></div></div>';
+                          htmltext += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must_top"></a></div><p>'+fmt.format(BigInt((0+Number(resultQ[i].point))))+'</p><div class="far fa-heart heart '+resultQ[i].qid+'"></div><p class="heart_num">'+fmt.format(BigInt((0+Number(resultQ[i].like_sum))))+'</p></div></div></div>';
                       }
                     }
 
@@ -405,7 +409,7 @@
                       for (let i=resultA.length-1; i>=0; i--){//let i = 0; i < resultA.length; i++
                           htmltextA += '<div class="contents"><a href="./detail.html?id='+resultA[i].qid+'">'+QList[(resultA[i].qid-1)].title+'</a>';
                           htmltextA += '<p>'+resultA[i].text+'</p>';
-                          htmltextA += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must_top"></a></div><p>'+(0+Number(resultA[i].point))+'</p><div class="far fa-heart heart '+resultA[i].qid+'"></div><p class="heart_num">'+(0+Number(resultA[i].like_sum))+'</p></div></div></div>';
+                          htmltextA += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must_top"></a></div><p>'+fmt.format(BigInt((0+Number(resultA[i].point))))+'</p><div class="far fa-heart heart '+resultA[i].qid+'"></div><p class="heart_num">'+fmt.format(BigInt((0+Number(resultA[i].like_sum))))+'</p></div></div></div>';
                       }
                     }
                     document.getElementById("question_list").innerHTML = htmltext;
@@ -439,12 +443,12 @@
                     }
 
                     var showQ = document.getElementById('question_list').getElementsByClassName('contents');
-                    console.log(showQ.length, show_numQ);
+                    //console.log(showQ.length, show_numQ);
                     for (var i = show_numQ; i < showQ.length; i++){
                       showQ[i].style.cssText = "display: none;";
                     }
                     var showA = document.getElementById('answer_list').getElementsByClassName('contents');
-                    console.log(showA.length, show_numA);
+                    //console.log(showA.length, show_numA);
                     for (var i = show_numA; i < showA.length; i++){
                       showA[i].style.cssText = "display: none;";
                     }
