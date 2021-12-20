@@ -124,7 +124,9 @@
     <div class="middle_box">
         <div class="item_box" style="min-height: 200px;">
           <div id="question_list"></div>
-          <button onclick="show_listQ()">その他の質問を見る</button>
+          <div class="more">
+            <button onclick="show_listQ()">もっと見る</button>
+          </div>
         </div>
         <div class="item_box">
             <form style="display: none;" name="likeform" action="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec" method="POST" target="sendPhoto">
@@ -135,7 +137,9 @@
               <input name="form_Aid" class="form-Aid">
             </form>
             <div id="answer_list"></div>
-            <button onclick="show_listA()">その他の回答を見る</button>
+            <div class="more">
+              <button onclick="show_listA()">もっと見る</button>
+            </div>
             <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

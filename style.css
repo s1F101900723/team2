@@ -639,3 +639,11 @@ div.search_tag{
   button{
     border: 0;
   }
+  .more{
+    text-align: center;
+  }
+  .more button{
+    background: none;
+    width: 100%;
+    padding: 5px 0px;
+  }
