@@ -42,7 +42,7 @@
 <header id="header">
   <a href="./index.html"><p class="header"><img class="header" src="./logo_menu.png">Questa</p></a>
 </header>
-<div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;" onclick="getpreQuestion(null)">
+<div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;">
   <span></span>
   <span></span>
   <a class="block-baloon-right"></a>
@@ -465,7 +465,7 @@
 
         load_sheet();
 
-        const $form = $('#form')
+        const $form = $('#form');
         $('.btn-send').on('click', evt => {
             $("#form_text").val(quill.root.innerHTML);
             $form.submit();
@@ -483,7 +483,7 @@
             $('#testModal').modal('hide');
             return false
         })
-        const $pointform = $('#pointform')
+        const $pointform = $('#pointform');
         $('.btn-sendpoint').on('click', evt => {
             $pointform.submit();
             $pointform[0].reset();
@@ -499,7 +499,7 @@
             $('#testpointModal').modal('hide');
             return false
         })
-        const $Qform = $('#Qform')
+        const $Qform = $('#Qform');
         $('.btn-sendQ').on('click', evt => {
             $("#formQ_text").val(quillQ.root.innerHTML);
             $Qform.submit();
@@ -515,6 +515,44 @@
             }
             $('#testQModal').modal('hide');
             return false
+        })
+        $form.on('hidden.bs.modal', function () {
+          $form[0].reset();
+            //document.getElementById('form-Qid').value = url;
+            for (var i = 0; i < form_Qid.length; i++){
+              form_Qid[i].textContent= url;
+              form_Qid[i].value= url;
+            }
+            var elems = document.getElementsByClassName('uid');
+            for (var i = 0; i < elems.length; i++){
+              elems[i].textContent= GlobalUid;
+              elems[i].value= GlobalUid;
+            }
+        })
+        $pointform.on('hidden.bs.modal', function () {
+          $pointform[0].reset();
+          for (var i = 0; i < form_Qid.length; i++){
+            form_Qid[i].textContent= url;
+            form_Qid[i].value= url;
+          }
+          var elems = document.getElementsByClassName('uid');
+          for (var i = 0; i < elems.length; i++){
+            elems[i].textContent= GlobalUid;
+            elems[i].value= GlobalUid;
+          }
+        })
+
+        $Qform.on('hidden.bs.modal', function () {
+          $Qform[0].reset();
+          for (var i = 0; i < form_Qid.length; i++){
+            form_Qid[i].textContent= url;
+            form_Qid[i].value= url;
+          }
+          var elems = document.getElementsByClassName('uid');
+          for (var i = 0; i < elems.length; i++){
+            elems[i].textContent= GlobalUid;
+            elems[i].value= GlobalUid;
+          }
         })
 
 

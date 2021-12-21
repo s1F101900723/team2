@@ -112,18 +112,6 @@ function getpretext(num){
 }
 
 function getpreQuestion(num){
-  if(num=='null'){
-    QID = document.getElementsByClassName("Qform-Qid");
-    for (var i = 0; i < QID.length; i++){
-      QID[i].value= null;
-    }
-    Q_title = document.getElementsByClassName("Q_title");
-    for (var i = 0; i < Q_title.length; i++){
-      Q_title[i].value= null;
-    }
-    quillQ.clipboard.dangerouslyPasteHTML();
-  }
-  else{
     var endpoint ="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";
     fetch(endpoint)
         .then(response => response.json())
@@ -144,5 +132,4 @@ function getpreQuestion(num){
                 Q_title[i].value= pretext_Q[0].title;
               }
         });
-  }
 }
