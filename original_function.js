@@ -112,7 +112,7 @@ function getpretext(num){
 }
 
 function getpreQuestion(num){
-  if(num==null){
+  if(num=='null'){
     QID = document.getElementsByClassName("Qform-Qid");
     for (var i = 0; i < QID.length; i++){
       QID[i].value= null;
