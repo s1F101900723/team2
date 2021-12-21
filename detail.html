@@ -42,7 +42,7 @@
 <header id="header">
   <a href="./index.html"><p class="header"><img class="header" src="./logo_menu.png">Questa</p></a>
 </header>
-<div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;">
+<div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;" onclick="getpreQuestion(null)">
   <span></span>
   <span></span>
   <a class="block-baloon-right"></a>
@@ -225,7 +225,7 @@
                           <label>uid<input name="uid" value="none" class="uid"></label>
                       </div>
                       <div class="form-group modal-body" >
-                          <label>Qid<input name="qid"></label>
+                          <label>Qid<input name="qid" class="Qform-Qid"></label>
                       </div>
                       <div class="form-group modal-body">
                           <label><input name="title" class="Q_title" placeholder="タイトルを入力してください"></label>
