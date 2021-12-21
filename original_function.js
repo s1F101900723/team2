@@ -111,6 +111,7 @@ function getpretext(num){
     FormGetAid(num);
 }
 
+
 function getpreQuestion(num){
     var endpoint ="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";
     fetch(endpoint)
@@ -122,14 +123,26 @@ function getpreQuestion(num){
               var pretext_Q=QList.filter(value => {if(value.qid === num && value.uid === GlobalUid){
               return true;
               }});
-              quillQ.clipboard.dangerouslyPasteHTML(pretext_Q[0].text);
               QID = document.getElementsByClassName("Qform-Qid");
-              for (var i = 0; i < QID.length; i++){
-                QID[i].value= num;
-              }
               Q_title = document.getElementsByClassName("Q_title");
-              for (var i = 0; i < Q_title.length; i++){
-                Q_title[i].value= pretext_Q[0].title;
+
+              if(num=='reset_editor'){
+                quillQ.clipboard.dangerouslyPasteHTML();
+                for (var i = 0; i < QID.length; i++){
+                  QID[i].value= null;
+                }
+                for (var i = 0; i < Q_title.length; i++){
+                  Q_title[i].value= null;
+                }
+              }
+              else{
+                quillQ.clipboard.dangerouslyPasteHTML(pretext_Q[0].text);
+                for (var i = 0; i < QID.length; i++){
+                  QID[i].value= num;
+                }
+                for (var i = 0; i < Q_title.length; i++){
+                  Q_title[i].value= pretext_Q[0].title;
+                }
               }
         });
 }
