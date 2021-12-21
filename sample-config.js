@@ -11,6 +11,8 @@
  * express or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import firebase from 'firebase/app'
+
 if(!firebase.app.length) {
   var config = {
       apiKey: "AIzaSyCJVJ8N1QZe6rmnczBDTLe7jI_6mmFGuCk",
@@ -27,5 +29,4 @@ if(!firebase.app.length) {
   
   // Google OAuth Client ID, needed to support One-tap sign-up.
   // Set to null if One-tap sign-up is not supported.
-  var CLIENT_ID =
-      '179784899863-7q8raoop3bideoubmmsnr40ie4ctldll.apps.googleusercontent.com';
+  var CLIENT_ID ='179784899863-7q8raoop3bideoubmmsnr40ie4ctldll.apps.googleusercontent.com';
