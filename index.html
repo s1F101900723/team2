@@ -42,7 +42,7 @@
 <header id="header">
   <a href="./index.html"><p class="header"><img class="header" src="./logo_menu.png">Questa</p></a>
 </header>
-<div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;" onclick="getpreQuestion('reset_editor');">
+<div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;" onclick="reset_Q();">
   <span></span>
   <span></span>
   <a class="block-baloon-right"></a>
@@ -480,6 +480,7 @@
               elems[i].textContent= GlobalUid;
               elems[i].value= GlobalUid;
             }
+            quill.clipboard.dangerouslyPasteHTML('<p></p>');
             $('#testModal').modal('hide');
             return false
         })
@@ -509,6 +510,7 @@
               elems[i].textContent= GlobalUid;
               elems[i].value= GlobalUid;
             }
+            quillQ.clipboard.dangerouslyPasteHTML('<p></p>');
             $('#testQModal').modal('hide');
             return false
         })

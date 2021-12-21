@@ -125,24 +125,24 @@ function getpreQuestion(num){
               }});
               QID = document.getElementsByClassName("Qform-Qid");
               Q_title = document.getElementsByClassName("Q_title");
-
-              if(num=='reset_editor'){
-                quillQ.clipboard.dangerouslyPasteHTML('<p></p>');
-                for (var i = 0; i < QID.length; i++){
-                  QID[i].value= null;
-                }
-                for (var i = 0; i < Q_title.length; i++){
-                  Q_title[i].value= null;
-                }
+              quillQ.clipboard.dangerouslyPasteHTML(pretext_Q[0].text);
+              for (var i = 0; i < QID.length; i++){
+                QID[i].value= num;
               }
-              else{
-                quillQ.clipboard.dangerouslyPasteHTML(pretext_Q[0].text);
-                for (var i = 0; i < QID.length; i++){
-                  QID[i].value= num;
-                }
-                for (var i = 0; i < Q_title.length; i++){
-                  Q_title[i].value= pretext_Q[0].title;
-                }
+              for (var i = 0; i < Q_title.length; i++){
+                Q_title[i].value= pretext_Q[0].title;
               }
         });
+}
+function reset_Q(){
+  quillQ.clipboard.dangerouslyPasteHTML('<p></p>');
+  for (var i = 0; i < QID.length; i++){
+    QID[i].value= null;
+  }
+  for (var i = 0; i < Q_title.length; i++){
+    Q_title[i].value= null;
+  }
+}
+function reset_A(){
+  quill.clipboard.dangerouslyPasteHTML('<p></p>');
 }

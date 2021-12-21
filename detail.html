@@ -42,7 +42,7 @@
 <header id="header">
   <a href="./index.html"><p class="header"><img class="header" src="./logo_menu.png">Questa</p></a>
 </header>
-<div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;" onclick="getpreQuestion('reset_editor');">
+<div class="bottom_right" data-toggle="modal" data-target="#testQModal" style="display: none;" onclick="reset_Q();">
   <span></span>
   <span></span>
   <a class="block-baloon-right"></a>
@@ -358,7 +358,7 @@
                       if(GlobalUid==resultQ[0].uid){
                         htmltext += '<a onclick="getpreQuestion('+resultQ[0].qid+')" class="btn_blue" data-toggle="modal" data-target="#testQModal">編集</a>';
                       }
-                      htmltext += '<a onclick="FormGetAid(null)" class="btn_blue" data-toggle="modal" data-target="#testModal">回答する</a>';
+                      htmltext += '<a onclick="FormGetAid(null); reset_A();" class="btn_blue" data-toggle="modal" data-target="#testModal">回答する</a>';
                       htmltext +='</div><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+fmt.format(BigInt((0+Number(resultQ[0].point))))+'</p><div class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div style="display: none;" class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+fmt.format(BigInt((0+Number(resultQ[0].like_sum))))+'</p></div></div>';
                     }
                     else{
@@ -366,7 +366,7 @@
                       if(GlobalUid==resultQ[0].uid){
                         htmltext += '<a onclick="getpreQuestion('+resultQ[0].qid+')" class="btn_blue" data-toggle="modal" data-target="#testQModal">編集</a>';
                       }
-                      htmltext += '<a onclick="FormGetAid(null)" class="btn_blue" data-toggle="modal" data-target="#testModal">回答する</a>';
+                      htmltext += '<a onclick="FormGetAid(null); reset_A();" class="btn_blue" data-toggle="modal" data-target="#testModal">回答する</a>';
                       htmltext += '</div><div><a href="" onclick="FormGetAid(0)" class="fab fa-product-hunt login_must" data-toggle="modal" data-target="#testpointModal"></a></div><p>'+fmt.format(BigInt((0+Number(resultQ[0].point))))+'</p><div style="display: none;" class="far fa-heart heart_on 0" onclick="Onheart(0)"></div><div class="far fa-heart heart_off 0" onclick="Offheart(0)"></div><p class="heart_num">'+fmt.format(BigInt((0+Number(resultQ[0].like_sum))))+'</p></div></div>';
                     }
 
@@ -437,6 +437,7 @@
               elems[i].textContent= GlobalUid;
               elems[i].value= GlobalUid;
             }
+            quill.clipboard.dangerouslyPasteHTML('<p></p>');
             $('#testModal').modal('hide');
             return false
         })
@@ -466,6 +467,7 @@
               elems[i].textContent= GlobalUid;
               elems[i].value= GlobalUid;
             }
+            quillQ.clipboard.dangerouslyPasteHTML('<p></p>');
             $('#testQModal').modal('hide');
             return false
         })
