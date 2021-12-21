@@ -121,7 +121,7 @@ function getpreQuestion(num){
     for (var i = 0; i < Q_title.length; i++){
       Q_title[i].value= null;
     }
-    quillQ.clipboard.dangerouslyPasteHTML(null);
+    quillQ.clipboard.dangerouslyPasteHTML();
   }
   else{
     var endpoint ="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";
