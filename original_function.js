@@ -127,7 +127,7 @@ function getpreQuestion(num){
               Q_title = document.getElementsByClassName("Q_title");
 
               if(num=='reset_editor'){
-                quillQ.clipboard.dangerouslyPasteHTML('<p>質問を入力してください</p>');
+                quillQ.clipboard.dangerouslyPasteHTML('<p></p>');
                 for (var i = 0; i < QID.length; i++){
                   QID[i].value= null;
                 }
