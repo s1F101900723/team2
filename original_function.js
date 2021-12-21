@@ -112,32 +112,37 @@ function getpretext(num){
 }
 
 function getpreQuestion(num){
-  var endpoint ="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";
-  fetch(endpoint)
-      .then(response => response.json())
-      /*成功した処理*/
-      .then(data => {
-          //JSONから配列に変換
-          if(num==null){
-            QID = document.getElementsByClassName("Qform-Qid");
-            for (var i = 0; i < QID.length; i++){
-              QID[i].value= null;
-            }
-          }
-          else{
-            var QList = data[2];
-            var pretext_Q=QList.filter(value => {if(value.qid === num && value.uid === GlobalUid){
-            return true;
-            }});
-            quillQ.clipboard.dangerouslyPasteHTML(pretext_Q[0].text);
-            QID = document.getElementsByClassName("Qform-Qid");
-            for (var i = 0; i < QID.length; i++){
-              QID[i].value= num;
-            }
-            Q_title = document.getElementsByClassName("Q_title");
-            for (var i = 0; i < Q_title.length; i++){
-              Q_title[i].value= pretext_Q[0].title;
-            }
-          }
-      });
+  if(num==null){
+    QID = document.getElementsByClassName("Qform-Qid");
+    for (var i = 0; i < QID.length; i++){
+      QID[i].value= null;
+    }
+    Q_title = document.getElementsByClassName("Q_title");
+    for (var i = 0; i < Q_title.length; i++){
+      Q_title[i].value= null;
+    }
+    quillQ.clipboard.dangerouslyPasteHTML(null);
+  }
+  else{
+    var endpoint ="https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";
+    fetch(endpoint)
+        .then(response => response.json())
+        /*成功した処理*/
+        .then(data => {
+            //JSONから配列に変換
+              var QList = data[2];
+              var pretext_Q=QList.filter(value => {if(value.qid === num && value.uid === GlobalUid){
+              return true;
+              }});
+              quillQ.clipboard.dangerouslyPasteHTML(pretext_Q[0].text);
+              QID = document.getElementsByClassName("Qform-Qid");
+              for (var i = 0; i < QID.length; i++){
+                QID[i].value= num;
+              }
+              Q_title = document.getElementsByClassName("Q_title");
+              for (var i = 0; i < Q_title.length; i++){
+                Q_title[i].value= pretext_Q[0].title;
+              }
+        });
+  }
 }
