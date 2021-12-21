@@ -22,7 +22,7 @@
       measurementId: "G-05J8LDGK7P"
     };
     firebase.initializeApp(config);
-    firebase.analytics();
+    firebase.analytics().logEvent('notification_received');
   
   // Google OAuth Client ID, needed to support One-tap sign-up.
   // Set to null if One-tap sign-up is not supported.
