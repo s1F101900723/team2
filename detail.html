@@ -461,9 +461,9 @@
             $("#formQ_text").val(quillQ.root.innerHTML);
             $Qform.submit();
             $Qform[0].reset();
-            for (var i = 0; i < form_Qid.length; i++){
-              form_Qid[i].textContent= url;
-              form_Qid[i].value= url;
+            for (var i = 0; i < Qform_Qid.length; i++){
+              Qform_Qid[i].textContent= url;
+              Qform_Qid[i].value= url;
             }
             var elems = document.getElementsByClassName('uid');
             for (var i = 0; i < elems.length; i++){
@@ -502,9 +502,9 @@
 
         $Qform.on('hidden.bs.modal', function () {
           $Qform[0].reset();
-          for (var i = 0; i < form_Qid.length; i++){
-            form_Qid[i].textContent= url;
-            form_Qid[i].value= url;
+          for (var i = 0; i < Qform_Qid.length; i++){
+            Qform_Qid[i].textContent= url;
+            Qform_Qid[i].value= url;
           }
           var elems = document.getElementsByClassName('uid');
           for (var i = 0; i < elems.length; i++){
