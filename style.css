@@ -699,3 +699,7 @@ div.search_tag{
   .Q_title{
     width: 100%;
   }
+
+  div.ql-snow .ql-editor a{
+    text-decoration: none;
+  }
