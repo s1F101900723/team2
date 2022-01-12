@@ -103,7 +103,7 @@
 </nav>
 <div class="circle-bg"></div>
 <!--  ここから -->
-<div class="main">
+<div class="main ql-snow">
     <div class="left_box">
       <div class="right_box moveleft">
         <div class="search_form">
@@ -254,7 +254,7 @@
       </div>
         <div class="item_box" style="min-height: 200px;">
           お知らせ
-          <div class="contents">
+          <div class="contents ql-editor">
             <img src="QR_944360.png">
           </div>
         </div>
@@ -401,7 +401,7 @@
                       htmltext += '<p>新規質問一覧</p>';
 
                       for (let i=resultQ.length-1; i>=0; i--){//let i = 0; i < resultQ.length; i++
-                          htmltext += '<div class="contents"><a href="./detail.html?id='+resultQ[i].qid+'">'+resultQ[i].title+'</a>';
+                          htmltext += '<div class="contents ql-editor"><a href="./detail.html?id='+resultQ[i].qid+'">'+resultQ[i].title+'</a>';
                           htmltext += '<p>'+resultQ[i].text+'</p>';
                           htmltext += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must_top"></a></div><p>'+fmt.format(BigInt((0+Number(resultQ[i].point))))+'</p><div class="far fa-heart heart '+resultQ[i].qid+'"></div><p class="heart_num">'+fmt.format(BigInt((0+Number(resultQ[i].like_sum))))+'</p></div></div></div>';
                       }
@@ -414,7 +414,7 @@
                       htmltextA += '<p>回答一覧</p>';
 
                       for (let i=resultA.length-1; i>=0; i--){//let i = 0; i < resultA.length; i++
-                          htmltextA += '<div class="contents"><a href="./detail.html?id='+resultA[i].qid+'">'+QList[(resultA[i].qid-1)].title+'</a>';
+                          htmltextA += '<div class="contents ql-editor"><a href="./detail.html?id='+resultA[i].qid+'">'+QList[(resultA[i].qid-1)].title+'</a>';
                           htmltextA += '<p>'+resultA[i].text+'</p>';
                           htmltextA += '<div class="heart_box"><div><a href="" class="fab fa-product-hunt login_must_top"></a></div><p>'+fmt.format(BigInt((0+Number(resultA[i].point))))+'</p><div class="far fa-heart heart '+resultA[i].qid+'"></div><p class="heart_num">'+fmt.format(BigInt((0+Number(resultA[i].like_sum))))+'</p></div></div></div>';
                       }

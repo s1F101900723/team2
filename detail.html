@@ -103,7 +103,7 @@
 </nav>
 <div class="circle-bg"></div>
 <!--  ここから -->
-<div class="main">
+<div class="main ql-snow">
     <div class="left_box">
       <div class="right_box moveleft">
         <div class="search_form">
@@ -374,7 +374,7 @@
                     for (let i = 0; i < resultA.length; i++){
                       if(LIKE_aid.includes(resultA[i].aid)==true){
 
-                        htmltext += '<div class="contents"><p>'+resultA[i].text+'</p>';                 
+                        htmltext += '<div class="contents ql-editor"><p>'+resultA[i].text+'</p>';                 
                         htmltext += '<div class="heart_box"><div class="left_icon">';
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn_blue" data-toggle="modal" data-target="#testModal">編集</a>';
@@ -384,7 +384,7 @@
                       }
                       else{
 
-                        htmltext += '<div class="contents"><p>'+resultA[i].text+'</p>';
+                        htmltext += '<div class="contents ql-editor"><p>'+resultA[i].text+'</p>';
                         htmltext += '<div class="heart_box"><div class="left_icon">';
                         if(GlobalUid==resultA[i].uid){
                           htmltext += '<a onclick="getpretext('+resultA[i].aid+')" class="btn_blue" data-toggle="modal" data-target="#testModal">編集</a>';
