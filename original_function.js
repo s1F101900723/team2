@@ -136,6 +136,7 @@ function getpreQuestion(num){
 }
 function reset_Q(){
   quillQ.clipboard.dangerouslyPasteHTML('<p></p>');
+  QID = document.getElementsByClassName("Qform-Qid");
   for (var i = 0; i < QID.length; i++){
     QID[i].value= null;
   }
