@@ -249,13 +249,13 @@ var toolbarOptions = [
 [{ 'indent': '-1'}, { 'indent': '+1' }],
 [{ 'direction': 'rtl' }],
 
-[{ 'font': [false, 'serif', 'monospace'] }],
-[{ 'size': ['small', false, 'large', 'huge'] }],
-[{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+//[{ 'font': [false, 'serif', 'monospace'] }],
+//[{ 'size': ['small', false, 'large', 'huge'] }],
+//[{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
-[{ 'color': [] }, { 'color': ['red', 'blue'] }, { 'background': [] }], 
-[{ 'font': [] }],
-[{ 'align': [] }],
+//[{ 'color': [] }, { 'color': ['red', 'blue'] }, { 'background': [] }], 
+//[{ 'font': [] }],
+//[{ 'align': [] }],
 
 ['clean']
 ];
