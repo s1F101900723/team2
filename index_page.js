@@ -49,18 +49,18 @@ const fmt =  new Intl.NumberFormat("en-GB",{
     form_Qid[i].value= url;
   }
 
-  //送信5秒後にjsonを再読み込み
+  //送信3秒後にjsonを再読み込み
   let btn = document.getElementById('btn-send');
     btn.addEventListener('click', function(){
         window.setTimeout(function(){
             load_sheet();
-        }, 5000);
+        }, 3000);
   });
   let btnQ = document.getElementById('btn-Qsend');
     btnQ.addEventListener('click', function(){
         window.setTimeout(function(){
             load_sheet();
-        }, 5000);
+        }, 3000);
   });
   
 
