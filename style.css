@@ -488,7 +488,7 @@ div#firebaseui-container a{
   color: #007bff;
 }
 
-div.ql-editor{
+form > div.ql-editor{
   overflow: auto;
   max-height: 200px;
 }
