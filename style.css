@@ -538,7 +538,6 @@ div.search_tag{
   right:30px;
   bottom:79px;
   width: 80px;
-  height: 70px;
   z-index: 20;
   transform: scale(0.7); /*新規作成ボタン大きさ変更*/
   }
@@ -568,9 +567,15 @@ div.search_tag{
   }
 .fa-home{
   font-size: 48px;
+  margin: 10px 0px;
+  text-decoration: none;
+  color: #ff8c00;
 }
 .fa-redo{
   font-size: 48px;
+  margin: 10px 0px;
+  text-decoration: none;
+  color: #ff8c00;
 }
 
   .block-baloon-right {
