@@ -565,13 +565,19 @@ div.search_tag{
   .bottom_right span:nth-of-type(1) {
   transform: rotate(90deg);
   }
-a.fa-home{
+.bottom_right_1 > a.fa-home{
   font-size: 48px;
   margin: 10px 0px;
   text-decoration: none;
   color: #ff8c00;
 }
-a.fa-redo{
+.bottom_right_1 > a.fa-redo{
+  font-size: 48px;
+  margin: 10px 0px;
+  text-decoration: none;
+  color: #ff8c00;
+}
+.bottom_right_1 > .fa-comment-dots{
   font-size: 48px;
   margin: 10px 0px;
   text-decoration: none;
