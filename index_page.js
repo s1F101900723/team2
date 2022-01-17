@@ -85,7 +85,7 @@ const fmt =  new Intl.NumberFormat("en-GB",{
               var UserList = data[0];
               var AList = data[1];
               var QList = data[2];
-              var LIKEList = data[3];
+              //var LIKEList = data[3];
               let likehtmltext = "";
               let pointhtmltext = "";
               var resultPointRank = UserList.filter(value => value.point !== '');
