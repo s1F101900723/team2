@@ -25,10 +25,7 @@ img{
   font-weight: 900;
   margin: -10px -30px 0px -10px;
   padding:10px 30px 0px 10px;
-  /*
-  clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
-  transform: scale(1);
-  */
+
 }
 .heart_box{
   margin: 0px 20px;
@@ -249,16 +246,6 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
    display: block; /*クラスが付与されたら出現*/
 }
 
-/*ナビゲーション*/
-/*#g-nav ul {
-opacity: 0; はじめは透過0*/
-  /*ナビゲーション天地中央揃え※レイアウトによって調整してください。不必要なら削除*/
-  /*position: absolute;
-  z-index: 999;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-}*/
 
 /*背景が出現後にナビゲーションを表示*/
 #g-nav.panelactive ul {
@@ -536,33 +523,24 @@ div.search_tag{
   text-align: center;
   position:fixed;
   right:30px;
-  bottom:79px;
-  width: 80px;
-  z-index: 20;
-  transform: scale(0.7); /*新規作成ボタン大きさ変更*/
-  }
-.bottom_right{
-  text-align: center;
-  position:fixed;
-  right:30px;
   bottom:30px;
   width: 80px;
-  height: 70px;
   z-index: 20;
-  transform: scale(0.7); /*新規作成ボタン大きさ変更*/
+  /*transform: scale(0.7); 新規作成ボタン大きさ変更*/
   }
-  .bottom_right span{
+
+  .bottom_right_1 span{
     position:absolute;
     z-index: 2;
     display: inline-block;
-    left: 25%;
+    right: 20%;
     height: 4.5px;
     border-radius: 2px;
     background-color: #ff8c00;
-    width: 50%;
-    top: 50%;
+    width: 25%;
+    bottom: 20px;
   }
-  .bottom_right span:nth-of-type(1) {
+  .bottom_right_1 span:nth-of-type(1) {
   transform: rotate(90deg);
   }
 .bottom_right_1 > a.fa-home{
@@ -571,45 +549,20 @@ div.search_tag{
   text-decoration: none;
   color: #ff8c00;
 }
+.bottom_right_1 > a.fa-home:hover{
+  color: #2c2c2f;
+}
 .bottom_right_1 > a.fa-redo{
   font-size: 48px;
   margin: 10px 0px;
   text-decoration: none;
   color: #ff8c00;
 }
-.bottom_right_1 > .fa-comment-dots{
+.bottom_right_1 > .bottom_right >a.fa-comment-dots{
   font-size: 48px;
   margin: 10px 0px;
   text-decoration: none;
-  color: #ff8c00;
-}
-
-  .block-baloon-right {
-	display: table;
-  width: 80px;
-  height: 70px;
-	position: relative;
-	background-color: #fff;/* 背景色 */
-	border: 4px solid #ff8c00;/* 枠線太さ、色 */
-  border-radius: 50px;
-}
-
-.block-baloon-right:before, .block-baloon-right:after	{
-  content: '';
-	position: absolute;
-  right: -6.5px;/* 枠線太さ */
-  bottom: -4px;
-  border-right: 40px solid transparent;
-  border-bottom: 40px solid #ff8c00;
-  z-index: -1;
-}
-.block-baloon-right:after	{
-	right: 3px;/* 枠線太さ */
-  bottom: 0;
-  border-right: 30px solid transparent;
-  border-bottom: 30px solid #fff;
-  z-index: 1;
-
+  color: #666;
 }
 
 .name_form_hidden {
