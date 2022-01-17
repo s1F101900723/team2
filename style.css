@@ -522,8 +522,8 @@ div.search_tag{
 .bottom_right_1{
   text-align: center;
   position:fixed;
-  right:30px;
-  bottom:30px;
+  right:10px;
+  bottom:20px;
   width: 80px;
   z-index: 20;
   /*transform: scale(0.7); 新規作成ボタン大きさ変更*/
