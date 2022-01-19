@@ -1,35 +1,3 @@
-function quickSort(profile, startID = 0, endID = profile.length - 1) {
-    var pivot = profile[Math.floor((startID + endID) / 2)].point;
-    var left = startID;
-    var right = endID;
-
-    while (true) {
-      while (profile[left].point < pivot) {
-        left++;
-      }
-      while (pivot < profile[right].point) {
-        right--;
-      }
-      if (right <= left) {
-        break;
-      }
-
-      var tmp = profile[left];
-      profile[left] = profile[right];
-      profile[right] = tmp;
-      left++;
-      right--;
-    }
-
-    if (startID < left - 1) {
-      quickSort(profile, startID, left - 1);
-    }
-    if (right + 1 < endID) {
-      quickSort(profile, right + 1, endID);
-    }
-}
-
-
 function submit_search(search_num){
     const textbox = document.getElementById("search_box"+search_num);
     const inputValue = textbox.value;

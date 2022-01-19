@@ -6,9 +6,6 @@ const fmt =  new Intl.NumberFormat("en-GB",{
   var url = Number(location.search.substring(4));//idが整数の場合
   let result = str.split("/").filter(e => Boolean(e));
   let last_url=result[result.length - 1];
-  //console.log(url);
-  //console.log(last_url);
-  //document.getElementById('form-Qid').value = url;
   var form_Qid = document.getElementsByClassName('form-Qid');
   for (var i = 0; i < form_Qid.length; i++){
     form_Qid[i].textContent= url;
@@ -28,13 +25,7 @@ const fmt =  new Intl.NumberFormat("en-GB",{
             load_sheet();
         }, 3000);
   });
-  
-  //window.onload = function(){
-    //60000ミリ秒（60秒）毎に関数を呼び出す
-  //  setInterval("load_sheet()", 60000);
-  //}
 
-  //GASのAPIのURL（各自変更してください。）
   function load_sheet(){
       var endpoint =
       "https://script.google.com/macros/s/AKfycbzWQ6ojGAvYrhWerWDPCO11Y_3VGqD_EYcSSyX5ZV7KIanzi-TXOHKsXUHsSBN5mgdiXw/exec";//WebAPIのURL
@@ -46,47 +37,35 @@ const fmt =  new Intl.NumberFormat("en-GB",{
           /*成功した処理*/
           .then(data => {
               //JSONから配列に変換
-              //console.log(data);
               var UserList = data[0];
               var AList = data[1];
               var QList = data[2];
               var LIKEList = data[3];
               let likehtmltext = "";
               let pointhtmltext = "";
-
-              var resultPointRank = UserList.filter(value => value.point !== '');
-              var resultLikeQRank = QList.filter(value => value.like_sum !== '');
-
-              quickSort(resultPointRank);
-              quickSort(resultLikeQRank);
-
-              pointhtmltext +='<p>#PointRanking</p>';
-              resultPointRank.reverse().map((e, i) => {
-                if ((i+1) > 3) return 
-                pointhtmltext += "<li>" + (i + 1) + "位　" + e.name + "　" + fmt.format(BigInt(e.point)) + " points</li>";
-              });
-              document.getElementById("point_ranking").innerHTML = pointhtmltext;
-
+              var LIKErankList = data[4];
+              var POINTrankList = data[5];
               likehtmltext +='<p>#LikesRanking</p>';
-              resultLikeQRank.reverse().map((e, i) => {
-                if ((i+1) > 3) return 
-                likehtmltext += "<li>" + (i + 1) + '位　<a href="./detail.html?id='+e.qid+'">' + e.title + "</a>　" + fmt.format(BigInt(e.like_sum)) + " likes</li>";
-              });
+              pointhtmltext +='<p>#PointRanking</p>';
+              for (let i=0; i<LIKErankList.length; i++){
+                likehtmltext += "<li>" + LIKErankList[i].rank + '位　<a href="./detail.html?id='+LIKErankList[i].qid+'">' + LIKErankList[i].title + "</a>　" + fmt.format(BigInt(LIKErankList[i].like_sum) ) + " likes</li>";
+              }
+              for (let i=0; i<POINTrankList.length; i++){
+                pointhtmltext += "<li>" + POINTrankList[i].rank + "位　" + POINTrankList[i].name + "　" + fmt.format(BigInt(POINTrankList[i].point) ) + " points</li>";
+              }
+              
+              document.getElementById("point_ranking").innerHTML = pointhtmltext;
               document.getElementById("like_Q_ranking").innerHTML = likehtmltext;
 
-              let htmltext = "";
+              
 
-              //console.log(typeof(url));
+              let htmltext = "";
               var resultQ = QList.filter(value => value.qid === url);
-              //console.log(resultQ);
               var resultA = AList.filter(value => value.qid === url);
-              //console.log(resultA);
               var resultLIKE = LIKEList.filter(value => {if(value.uid === GlobalUid && value.qid === url && value.like_num === 1){
                 return true;
               }});
-              //console.log(resultLIKE);
               var LIKE_aid = resultLIKE.map(value => value["aid"]);
-              //console.log(LIKE_aid);
               htmltext += '<div class="detail_contents"><p>質問</p>';
               htmltext += '<p>' + resultQ[0].title + '</p>';
               htmltext += '<p>' + resultQ[0].text + '</p></div>';
@@ -131,9 +110,6 @@ const fmt =  new Intl.NumberFormat("en-GB",{
                 }
               }
               document.getElementById("detail_article").innerHTML = htmltext;
-              //console.log(htmltext);
-              //quill.clipboard.dangerouslyPasteHTML(resultA[2].text);//現在は仮でテキストを指定している
-              //document.getElementById("editor").innerHTML = resultA[2].text;
               if(GlobalUid==undefined){
                 document.getElementById('photo').style.display = "none";
                 var login_target_off = document.getElementsByClassName('btn_blue');
@@ -165,7 +141,6 @@ const fmt =  new Intl.NumberFormat("en-GB",{
       $("#form_text").val(quill.root.innerHTML);
       $form.submit();
       $form[0].reset();
-      //document.getElementById('form-Qid').value = url;
       for (var i = 0; i < form_Qid.length; i++){
         form_Qid[i].textContent= url;
         form_Qid[i].value= url;
@@ -220,15 +195,6 @@ var toolbarOptions = [
 [{ 'script': 'sub'}, { 'script': 'super' }],
 [{ 'indent': '-1'}, { 'indent': '+1' }],
 [{ 'direction': 'rtl' }],
-
-//[{ 'font': [false, 'serif', 'monospace'] }],
-//[{ 'size': ['small', false, 'large', 'huge'] }],
-//[{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-//[{ 'color': [] }, { 'color': ['red', 'blue'] }, { 'background': [] }], 
-//[{ 'font': [] }],
-//[{ 'align': [] }],
-
 ['clean']
 ];
 var quill = new Quill('#editor',{
